@@ -53,6 +53,14 @@ For each use case we write down:
 
 Each specification also has an activity diagram that shows every path through the use case.
 
+![Activity diagram: Create a task](../diagrams/activity-create-task.png)
+
+*Activity diagram for Create a task.*
+
+![Activity diagram: Schedule meeting](../diagrams/activity-schedule-meeting.png)
+
+*Activity diagram for Schedule meeting.*
+
 ## What we learned
 
 Writing the specifications showed us gaps in our SRS that the diagram hid. We had never decided what StudyHub suggests when no time works for everyone, or what a task without an owner looks like. It is better to find that out now than when we are coding.

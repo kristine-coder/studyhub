@@ -6,13 +6,13 @@ Last week we introduced the idea behind StudyHub. This week we started turning t
 
 ## Who does what
 
-> **To do (team):** write down the real roles. For each person: name, main responsibility (for example front end, back end, documentation, testing) and what they work on first.
-
 | Team member | Responsibility |
 | :---- | :---- |
-| Ergens Hyso | *to fill in* |
-| Kristine Megrelishvili | *to fill in* |
-| Antonio Kanani | *to fill in* |
+| Ergens Hyso | Full-stack development and architecture |
+| Kristine Megrelishvili | UI/UX design and planning |
+| Antonio Kanani | Database and workflow |
+
+> **To do (team):** check these roles and add what each person works on first.
 
 ## How StudyHub will be built
 
