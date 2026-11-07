@@ -1,0 +1,56 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #EEF2FF
+  BorderColor #333333
+}
+
+actor Visitor
+actor Student
+actor "Group Owner" as Owner
+actor "Email Service" as Email <<system>>
+
+Owner -|> Student
+
+rectangle StudyHub {
+  usecase "Register account" as UC_Register
+  usecase "Log in" as UC_Login
+  usecase "Manage account" as UC_Account
+  usecase "Manage courses\nand deadlines" as UC_Courses
+  usecase "View dashboard" as UC_Dashboard
+  usecase "Export calendar" as UC_Export
+  usecase "Create study group" as UC_CreateGroup
+  usecase "Manage group members" as UC_Members
+  usecase "Manage tasks" as UC_Tasks
+  usecase "Set availability" as UC_Availability
+  usecase "Schedule meeting" as UC_Meeting
+  usecase "Find common\nmeeting time" as UC_FindTime
+  usecase "Edit shared notes" as UC_Notes
+  usecase "Send reminders" as UC_Reminders
+}
+
+Visitor -- UC_Register
+
+Student -- UC_Login
+Student -- UC_Account
+Student -- UC_Courses
+Student -- UC_Dashboard
+Student -- UC_CreateGroup
+Student -- UC_Tasks
+Student -- UC_Availability
+Student -- UC_Meeting
+Student -- UC_Notes
+
+Owner -- UC_Members
+
+UC_Dashboard <.. UC_Export : <<extend>>
+UC_Tasks <.. UC_Reminders : <<extend>>
+UC_Meeting <.. UC_Reminders : <<extend>>
+UC_Meeting ..> UC_FindTime : <<include>>
+
+UC_Register -- Email
+UC_Login -- Email
+UC_Members -- Email
+UC_Reminders -- Email
+@enduml
