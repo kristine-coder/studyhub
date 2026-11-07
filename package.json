@@ -1,0 +1,16 @@
+{
+  "name": "studyhub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "StudyHub: courses, deadlines and group work in one place",
+  "type": "commonjs",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.3.0"
+  }
+}
