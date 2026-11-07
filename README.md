@@ -10,7 +10,7 @@ StudyHub helps students keep track of their courses, deadlines, and group work i
 
 - [Software Requirements Specification](docs/SRS.md)
 - [Use case diagram](docs/diagrams/use-case-diagram.png) ([PlantUML source](docs/diagrams/use-case-diagram.puml))
-- Use case specifications: [Log in](docs/use-cases/log-in.md), [Manage tasks](docs/use-cases/create-task.md), [Schedule meeting](docs/use-cases/schedule-meeting.md)
+- Use case specifications: [Create a task](docs/use-cases/create-task.md), [Schedule meeting](docs/use-cases/schedule-meeting.md)
 
 ## Blog
 

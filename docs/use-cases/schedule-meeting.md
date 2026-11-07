@@ -6,7 +6,7 @@
 | **Actor** | Student (group member) |
 | **Preconditions** | The student is logged in and is in the group. |
 | **Postconditions** | The meeting is visible to the whole group, with who has accepted. |
-| **Tests** | Not written yet (priority *Medium* in the [SRS](../SRS.md)). |
+| **Tests** | [`features/schedule_meeting.feature`](../../features/schedule_meeting.feature) |
 
 ## Main flow
 
@@ -20,6 +20,11 @@
 
 - *2a. No time works for everyone:* the system shows the times when most members are free.
 - *2b. Nobody has entered availability:* the system asks the student to choose a time freely.
+
+## Business rules
+
+- "Most members are free" means: the system shows the times when the largest number of members are free, and how many of them that is (for example "2 of 3 members are free").
+- A new meeting starts with the answer "No answer yet" for every member.
 
 ## Activity diagram
 

@@ -1,4 +1,4 @@
-# Use case: Manage tasks (create a task)
+# Use case: Create a task
 
 |  |  |
 | :---- | :---- |

@@ -10,7 +10,7 @@ So far our project went like this:
 2. **Overall use case diagram:** the circles and stick figures that show *who* can do *what*.
 3. **SRS:** the [requirements document](../SRS.md), where we chose the scope for this semester.
 
-The diagram has a weakness. Take **Log in**: all we did was draw a circle, name it, and say a registered student can use it. We don't yet know *how* it works. The use case specification is the next step, where we drill deeper.
+The diagram has a weakness. Take **Schedule meeting**: all we did was draw a circle, name it, and say a group member can use it. We don't yet know *how* it works. The use case specification is the next step, where we drill deeper.
 
 ## The "throw it over the wall" test
 
@@ -46,19 +46,18 @@ For each use case we write down:
 | Alternative flows | What happens when something differs or goes wrong? |
 | Postconditions | What is true afterwards? |
 
-## Our three use case specifications
+## Our two use case specifications
 
-- **[Log in](../use-cases/log-in.md):** a registered student gets into their account. Alternative flows cover wrong credentials, an unconfirmed email address, a forgotten password and blocking after five wrong attempts.
-- **[Manage tasks (create a task)](../use-cases/create-task.md):** a group member puts a piece of work on the board and says who does it. Alternative flows cover a missing title, a task without a person responsible and a due date in the past.
-- **[Schedule meeting](../use-cases/schedule-meeting.md):** a group finds a time that works for everyone. Alternative flows cover no common time and nobody having entered availability.
+- **[Create a task](../use-cases/create-task.md):** a group member puts a piece of work on the board and says who does it. Alternative flows cover a missing title, a task without a person responsible and a due date in the past.
+- **[Schedule meeting](../use-cases/schedule-meeting.md):** a group finds a time that works for everyone. It always includes the use case *Find common meeting time*. Alternative flows cover no time that works for everyone and nobody having entered availability.
 
 Each specification also has an activity diagram that shows every path through the use case.
 
 ## What we learned
 
-Writing the specifications showed us gaps in our SRS that the diagram hid. We had never decided what happens after failed logins, or what a task without an owner looks like. It is better to find that out now than when we are coding.
+Writing the specifications showed us gaps in our SRS that the diagram hid. We had never decided what StudyHub suggests when no time works for everyone, or what a task without an owner looks like. It is better to find that out now than when we are coding.
 
-The next test is the "over the wall" one: could another team, or an AI, build these three use cases from our text alone? We will check this ourselves and adapt the specifications until the answer is yes.
+The next test is the "over the wall" one: could another team, or an AI, build these two use cases from our text alone? We will check this ourselves and adapt the specifications until the answer is yes.
 
 ## Next week
 

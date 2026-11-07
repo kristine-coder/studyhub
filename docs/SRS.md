@@ -49,7 +49,7 @@ The use cases are shown in the [use case diagram](#22-use-case-diagram). StudyHu
 - [UML use case diagrams](https://www.uml-diagrams.org/use-case-diagrams.html)  
 - IEEE Std 830-1998, *Recommended Practice for Software Requirements Specifications*  
 - [StudyHub use case diagram](diagrams/use-case-diagram.png) ([PlantUML source](diagrams/use-case-diagram.puml))
-- StudyHub use case specifications: [Log in](use-cases/log-in.md), [Manage tasks](use-cases/create-task.md), [Schedule meeting](use-cases/schedule-meeting.md)
+- StudyHub use case specifications: [Create a task](use-cases/create-task.md), [Schedule meeting](use-cases/schedule-meeting.md)
 
 ## 1.5 Overview
 
@@ -214,9 +214,8 @@ GDPR (EU 2016/679), WCAG 2.1 level AA, RFC 5545 (iCalendar), IEEE Std 830-1998 a
 
 | Use case | Specification | Automated tests |
 | :---- | :---- | :---- |
-| Log in | [log-in.md](use-cases/log-in.md) | [log_in.feature](../features/log_in.feature) |
-| Manage tasks (create a task) | [create-task.md](use-cases/create-task.md) | [create_task.feature](../features/create_task.feature) |
-| Schedule meeting | [schedule-meeting.md](use-cases/schedule-meeting.md) | Not written yet |
+| Create a task | [create-task.md](use-cases/create-task.md) | [create_task.feature](../features/create_task.feature) |
+| Schedule meeting | [schedule-meeting.md](use-cases/schedule-meeting.md) | [schedule_meeting.feature](../features/schedule_meeting.feature) |
 
 ## 4.2 Revision History
 
@@ -224,6 +223,7 @@ GDPR (EU 2016/679), WCAG 2.1 level AA, RFC 5545 (iCalendar), IEEE Std 830-1998 a
 | :---- | :---- | :---- |
 | 15 Oct 2026 | 1.0 | First version |
 | 7 Nov 2026 | 1.1 | Fixed broken links and the empty 2.1 heading, added *Manage account* to the use case diagram, linked the use case specifications and tests |
+| 8 Nov 2026 | 1.2 | Replaced the *Log in* specification with *Schedule meeting*, renamed *Manage tasks (create a task)* to *Create a task* |
 
 ## 4.3 Team
 

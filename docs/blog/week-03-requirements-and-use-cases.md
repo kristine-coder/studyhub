@@ -46,7 +46,7 @@ Writing the SRS also meant deciding what is out of scope. StudyHub is not a lear
 
 ## Next week
 
-The diagram only shows that a use case exists, not how it works. Next week we take three use cases (*Log in*, *Manage tasks* and *Schedule meeting*) and write a detailed specification for each.
+The diagram only shows that a use case exists, not how it works. Next week we take two use cases (*Create a task* and *Schedule meeting*) and write a detailed specification for each.
 
 ## Reflection on AI use
 

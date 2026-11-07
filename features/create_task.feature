@@ -1,4 +1,4 @@
-Feature: Manage tasks (create a task)
+Feature: Create a task
   As a group member
   I want to put a piece of work on the board and say who does it
   So that the group knows who is doing what
