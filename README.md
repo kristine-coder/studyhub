@@ -41,7 +41,6 @@ docs/
   use-cases/           one file per use case, with its activity diagram
   diagrams/            use case diagram (PlantUML source and PNG)
   blog/                weekly blog posts
-  ai-usage-log.md      record of what AI produced in this repository
 features/
   *.feature            Gherkin scenarios, one file per use case
   step_definitions/    code that connects each step to the model
