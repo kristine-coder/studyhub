@@ -48,9 +48,13 @@ Each line is connected to a small piece of code, a **step definition**. The sent
 
 ## The feature files in our IDE
 
-> **To do (team):** add two screenshots from your own IDE here:
-> 1. A `.feature` file open with Gherkin syntax highlighting.
-> 2. The IDE suggesting a step while you type (autocompletion).
+We installed the official Cucumber extension in our IDE. It highlights the Gherkin keywords in our feature files:
+
+![create_task.feature with Gherkin syntax highlighting](../screenshots/feature-file.png)
+
+It also suggests steps from our step definitions while we type, so we reuse existing steps instead of writing new ones with slightly different wording:
+
+![The IDE suggesting steps while typing in create_task.feature](../screenshots/autocomplete.png)
 
 ## Our two use cases
 
