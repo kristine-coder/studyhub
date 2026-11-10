@@ -51,4 +51,4 @@ Next week we write down exactly what StudyHub must do: our Software Requirements
 
 ## Reflection on AI use
 
-> **To do (team):** write this section yourselves, in your own words. Do not generate it with AI.
+For this week's update, our team used Cursor AI as an assistant to help structure the  layout and refine the text for clarity. We also used it to summarize the reasoning behind our technical choices. All project management decisions, technology selections, and task distributions were made entirely by our team.
