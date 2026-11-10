@@ -36,4 +36,4 @@ We are three students: Ergens Hyso, Kristine Megrelishvili and Antonio Kanani. N
 
 ## Reflection on AI use
 
-> **To do (team):** write this section yourselves, in your own words. Do not generate it with AI.
+> **This week we gathered with each other and gave our ideas and decided on our project , we didnt used AI or any AI tools for this week.
