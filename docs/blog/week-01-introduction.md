@@ -35,5 +35,4 @@ To keep the project realistic for one semester, we decided early what we will **
 We are three students: Ergens Hyso, Kristine Megrelishvili and Antonio Kanani. Next week we will write about how we split the work, which technologies we want to use and how we set up our project.
 
 ## Reflection on AI use
-
-> **This week we gathered with each other and gave our ideas and decided on our project , we didnt used AI or any AI tools for this week.
+Because this is a new repository we created all new files and decided to storage each file under a specific name to make it easier to find everything. We also gathered with each other and kept our original ideas of our project, we didnt used AI on the git this week but we used Cursor AI to fix the theme on our wordpress page.
