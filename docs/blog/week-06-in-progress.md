@@ -95,11 +95,17 @@ The goal is one chain:
 
 WebStorm is already connected to `https://kristine2473.youtrack.cloud`; **Open Task** lists our `STU-…` issues, and changelist names use `${id} ${summary}`. YouTrack **Version Control** is linked to GitHub `kristine-coder/studyhub`, so commits that mention an issue ID can appear on that issue.
 
+WebStorm Task server (token hidden):
+
+![WebStorm YouTrack Task server](images/week-06/webstorm-server.png)
+
 GitHub commit that references the blog task:
 
 ![STU-9 commit on GitHub](images/week-06/commit-stu-9.png)
 
-> **Team action:** add a WebStorm Task server screenshot (token hidden).
+The same commits appear on issue **STU-9** under **VCS changes**:
+
+![STU-9 VCS changes in YouTrack](images/week-06/vcs-stu-9.png)
 
 ## Dashboard and reports
 
@@ -132,12 +138,6 @@ We do not need a perfect burn-down, and we do not need a full epic / story / sub
 
 In Elaboration#2 we take the breakdown of *Create a task* and *Schedule meeting* and start the real implementation against the architecture we confirm this week.
 
-## Questions for you
-
-- Do you also use YouTrack, or did you stay on Jira / GitHub Projects?
-- How did you make the board readable for people outside the team?
-- Did the IDE → YouTrack → GitHub chain work on the first try?
-
 ## Reflection on AI use
 
-We used Cursor AI to turn the grading criteria and another team’s Week 6 structure into a StudyHub checklist. The choice of YouTrack, the sprint name Elaboration#1, the task list and who owns each task are team decisions. Screenshots and live board links will be added after the YouTrack project exists.
+We used Cursor AI to turn the grading criteria and another team’s Week 6 structure into a StudyHub checklist. The choice of YouTrack, the sprint name Elaboration#1, the task list and who owns each task are team decisions. Board links, dashboard charts and toolchain screenshots in this post are from our real YouTrack project and GitHub commits.

@@ -44,14 +44,14 @@ Follow this list until every grading item has a check. Paste public links and sc
 - [x] Changelist format `${id} ${summary}` (issue ID in commits).
 - [ ] Use **Start Task** → status In Progress + timer (+ optional branch) — demo once for screenshot.
 - [ ] When finished, change status so spent time is stored.
-- [ ] Screenshot of Servers settings (no token) into the blog.
+- [x] Screenshot of Servers settings (no token) into the blog.
 
 ## 6. Git / GitHub integration
 
 - [x] YouTrack **Version Control**: GitHub `kristine-coder/studyhub` connected.
 - [x] Commit message includes `STU-9 …` (pushed to GitHub: `4c59a77`, `e5e80f4`).
-- [ ] Confirm the commit appears on the YouTrack issue STU-9 (open issue → VCS / commits).
-- [ ] If something cannot be automated, write one sentence in the blog explaining why.
+- [x] Confirm the commit appears on the YouTrack issue STU-9 (VCS changes screenshot in blog).
+- [x] VCS ↔ GitHub chain working for `STU-9` commits.
 
 ## 7. Midterm report readiness (tags must exist now)
 
