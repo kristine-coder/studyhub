@@ -703,10 +703,10 @@
 <p>This week we move into <strong>Elaboration</strong>. By the midterm we need the Lifecycle Architecture Milestone: proof that our React / Node.js / PostgreSQL stack can carry the product. To get there we need more than good documents. We need to plan, track and measure the work. That is why Week 6 is about project management: a public Scrum board, RUP tags, time tracking, and a chain from the IDE to GitHub.</p>
 <h2>Our project management tool: YouTrack</h2>
 <p>The grading criteria ask for <strong>YouTrack</strong>, so we use YouTrack as our Scrum tool. Earlier we kept a light plan in GitHub Projects; that was useful for Week 2, but it does not give us the public board, RUP custom fields, burn-down and time reports this assignment needs. YouTrack does.</p>
-<blockquote>
-<p><strong>Team action:</strong> create the YouTrack project (suggested key <strong>SH</strong>), make the Scrum board readable for everyone (grant <strong>Issue Reader</strong> to All Users), and paste the public board URL here.</p>
-</blockquote>
-<p>Every issue will look like <code>SH-12</code>. That ID must appear in commit messages and pull request titles.</p>
+<p>Our public Scrum board (project key <strong>STU</strong>):</p>
+<p><a href="https://kristine2473.youtrack.cloud/projects/STU/agiles/204-1/current">StudyHub agile board</a></p>
+<p>We granted a read-only role (<strong>Issue Reader</strong>) so people outside the team can open the board without edit rights.</p>
+<p>Every issue will look like <code>STU-12</code>. That ID must appear in commit messages and pull request titles.</p>
 <h2>Combining Scrum with RUP</h2>
 <p>Scrum tells us how to work in short iterations. RUP tells us what kind of work we are doing and in which phase we are. Every task on the board carries:</p>
 <table>
@@ -762,9 +762,7 @@
 </tr>
 </tbody></table>
 <p>We do not need a perfect epic / story / subtask tree yet. We do need Elaboration#1 to exist with dates, so the first burn-down report has a start and an end.</p>
-<blockquote>
-<p><strong>Team action:</strong> create sprint <strong>Elaboration#1</strong> with dates and link the burn-down (or a screenshot) here.</p>
-</blockquote>
+<p>Sprint <strong>Elaboration#1</strong> runs <strong>11–18 Nov 2026</strong>. The first burn-down is on our dashboard (link below).</p>
 <h2>Elaboration#1: what is on the sprint</h2>
 <p>The first Elaboration sprint focuses on the technical foundation and on turning our two use cases into tracked work:</p>
 <table>
@@ -851,8 +849,9 @@
 <td align="left">3h</td>
 </tr>
 </tbody></table>
+<p>Sprint <strong>Elaboration#1</strong> (11–18 Nov 2026) now holds the foundation tasks above, each with an assignee, Estimated time, Phase, Workflow and (when relevant) Use case.</p>
 <blockquote>
-<p><strong>Team action:</strong> create these issues on Elaboration#1, assign them, fill Estimated time, and add a board screenshot here.</p>
+<p><strong>Team action:</strong> add a board screenshot of Elaboration#1 here.</p>
 </blockquote>
 <p>If the sprint looks overloaded for one person, we move unfinished work to Elaboration#2 instead of faking a green burn-down. Clean charts are not required yet; honest estimates and tags are.</p>
 <h2>Time tracking</h2>
@@ -866,13 +865,14 @@
 <h2>Integration with the IDE and GitHub</h2>
 <p>The goal is one chain:</p>
 <ol>
-<li>configure <strong>Settings → Tools → Tasks → Servers</strong> with the YouTrack URL and a token (not a password in the blog),</li>
+<li>configure <strong>Settings → Tools → Tasks → Servers</strong> with the YouTrack URL and a permanent token,</li>
 <li>use <strong>Start Task</strong> so the issue moves to In Progress and the timer starts (and optionally a branch is created),</li>
-<li>put the issue ID in the commit message and the pull request title, for example <code>SH-12 Confirm architecture skeleton</code>,</li>
-<li>see the commit linked on the YouTrack issue (VCS integration / token from Settings → VCS).</li>
+<li>put the issue ID in the commit message and the pull request title, for example <code>STU-9 Write Week 6 blog post</code>,</li>
+<li>see the commit linked on the YouTrack issue (VCS integration).</li>
 </ol>
+<p>WebStorm is already connected to <code>https://kristine2473.youtrack.cloud</code>; <strong>Open Task</strong> lists our <code>STU-…</code> issues, and changelist names use <code>${id} ${summary}</code>. YouTrack <strong>Version Control</strong> is linked to GitHub <code>kristine-coder/studyhub</code>, so commits that mention an issue ID can appear on that issue.</p>
 <blockquote>
-<p><strong>Team action:</strong> add a screenshot of the Task server settings (no secrets) and one commit or PR that contains a YouTrack ID.</p>
+<p><strong>Team action:</strong> add a screenshot of the Task server settings (token hidden) and one commit or PR that contains a <code>STU-</code> ID.</p>
 </blockquote>
 <p>If a part of the chain cannot be automated on our plan, we write that down here instead of leaving a silent gap.</p>
 <h2>Dashboard and reports</h2>
@@ -882,8 +882,11 @@
 <li>a chart of work by <strong>RUP workflow over time</strong> (cumulative flow by workflow colours on the y-axis of time — not only a flat list of tasks).</li>
 </ul>
 <p>Share the dashboard: <strong>all users</strong> can view (no edit); <strong>team members</strong> can edit. Grant <strong>Issue Reader</strong> so people outside the team can open the public board without an invite.</p>
+<p>The Elaboration#1 dashboard includes the sprint <strong>burndown</strong> and a <strong>cumulative flow</strong> chart coloured by RUP <strong>Workflow</strong> (not by task status):</p>
+<p><a href="https://kristine2473.youtrack.cloud/dashboard?id=177-3">StudyHub Elaboration#1 dashboard</a></p>
+<p>The dashboard is shared so All Users can view it.</p>
 <blockquote>
-<p><strong>Team action:</strong> paste the public dashboard link and a screenshot of the cumulative workflow chart here.</p>
+<p><strong>Team action:</strong> add screenshots of burndown + cumulative flow (by Workflow) here.</p>
 </blockquote>
 <h2>Proof we follow the method</h2>
 <p>This post is the written proof. The live proof is the public YouTrack board: sprints named <code>Elaboration#…</code>, tasks with assignees and estimates, Phase / Workflow / UC tags, time spent, and commits that carry the issue ID.</p>

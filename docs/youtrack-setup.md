@@ -49,8 +49,8 @@ Follow this list until every grading item has a check. Paste public links and sc
 ## 6. Git / GitHub integration
 
 - [x] YouTrack **Version Control**: GitHub `kristine-coder/studyhub` connected.
-- [x] Commit message includes `STU-9 …` (local commit `4c59a77`; push to GitHub still needed for YouTrack VCS).
-- [ ] Confirm the commit appears on the YouTrack issue (after push).
+- [x] Commit message includes `STU-9 …` (pushed to GitHub: `4c59a77`, `e5e80f4`).
+- [ ] Confirm the commit appears on the YouTrack issue STU-9 (open issue → VCS / commits).
 - [ ] If something cannot be automated, write one sentence in the blog explaining why.
 
 ## 7. Midterm report readiness (tags must exist now)
