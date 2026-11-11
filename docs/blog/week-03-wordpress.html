@@ -1,0 +1,136 @@
+<!-- wp:paragraph {"style":{"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"1rem","fontStyle":"italic","lineHeight":"1.5"},"color":{"text":"#5c6b7a"},"spacing":{"margin":{"top":"0","bottom":"1.75rem"}}}} -->
+<p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"1.1875rem","lineHeight":"1.7"},"color":{"text":"#142033"},"elements":{"link":{"color":{"text":"#1e4d8c"}}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p>Last week we split the work and chose how StudyHub will be built. This week we wrote down exactly <strong>what</strong> StudyHub must do. We did that in two documents: a Software Requirements Specification (SRS) and an overall use case diagram.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"our-srs","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="our-srs">Our SRS</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Our <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/SRS.md">SRS</a> follows the RUP template, with IEEE 830 as guidance. It has four parts:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Introduction:</strong> purpose, scope, definitions and references.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Overall description:</strong> what kind of product StudyHub is, its main functions, its users, constraints and assumptions.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Specific requirements:</strong> what the system must do (functionality) and how well it must do it (usability, reliability, performance, supportability, design constraints, interfaces, licensing and standards).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Supporting information.</strong></li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":2,"anchor":"choosing-the-scope-for-this-semester","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="choosing-the-scope-for-this-semester">Choosing the scope for this semester</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We can&#39;t build everything in one semester, so we gave every group of requirements a priority. The first release has everything marked <em>High</em>. <em>Medium</em> and <em>Low</em> come later if time allows.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}},"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"0.98rem"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:table {"style":{"typography":{"fontSize":"15px"}}} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Priority</th><th>Requirements</th></tr></thead><tbody><tr><td>High</td><td>Accounts, courses and deadlines, study groups, tasks, dashboard</td></tr><tr><td>Medium</td><td>Availability and meetings, shared notes, email notifications</td></tr><tr><td>Low</td><td>Calendar export (iCalendar)</td></tr></tbody></table></figure>
+<!-- /wp:table --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>We also wrote down the quality we expect, with numbers we can check later. Some examples:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>A new user can register, create a group and add a first task within <strong>5 minutes</strong> without help.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>95 %</strong> of pages and actions respond within <strong>2 seconds</strong>.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>The interface works on phones from <strong>360 px</strong> wide and follows <strong>WCAG 2.1 level AA</strong>.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":2,"anchor":"the-overall-use-case-diagram","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="the-overall-use-case-diagram">The overall use case diagram</h2>
+<!-- /wp:heading -->
+
+<!-- wp:group {"style":{"color":{"background":"#f7fafc"},"border":{"width":"1px","color":"#d5deea","radius":"8px"},"spacing":{"padding":{"top":"12px","right":"12px","bottom":"8px","left":"12px"},"margin":{"top":"1.5rem","bottom":"1.5rem"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:image {"sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/diagrams/use-case-diagram.png" alt="StudyHub use case diagram"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>The diagram shows <strong>who</strong> can do <strong>what</strong> in StudyHub:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Actors</strong> are roles, not people. A <em>Visitor</em> can only register. A <em>Student</em> uses most of StudyHub. A <em>Group Owner</em> &quot;is a&quot; Student who can also manage the members of a group. The <em>Email Service</em> is an external system, so it is an actor too.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Use cases</strong> are named as goals, a verb plus an object: <em>Manage tasks</em>, <em>Schedule meeting</em>, <em>View dashboard</em>.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>«include»</strong> means one use case always uses another: <em>Schedule meeting</em> always includes <em>Find common meeting time</em>.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>«extend»</strong> means optional extra behaviour: <em>Send reminders</em> extends <em>Manage tasks</em> and <em>Schedule meeting</em>, and <em>Export calendar</em> extends <em>View dashboard</em>.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":2,"anchor":"what-studyhub-will-not-do","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="what-studyhub-will-not-do">What StudyHub will not do</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Writing the SRS also meant deciding what is out of scope. StudyHub is not a learning management system like Moodle, has no video calls and does no grading.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"next-week","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="next-week">Next week</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The diagram only shows that a use case exists, not how it works. Next week we take two use cases (<em>Create a task</em> and <em>Schedule meeting</em>) and write a detailed specification for each.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"questions-for-you","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="questions-for-you">Questions for you</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Do our priorities (High, Medium, Low) look right to you?</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Are our quality goals, like 2 seconds per page, realistic?</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Is anything in the use case diagram unclear?</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.05rem"},"color":{"text":"#5c6b7a"}}} -->
+<p>Leave us a comment, we read every one of them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"reflection-on-ai-use","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="reflection-on-ai-use">Reflection on AI use</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>This week we used Cursor AI to help us tidy the SRS wording and to check that the use case diagram matched the text. The priorities, the quality goals and what we leave out of scope were decided by the team in our meetings. We read every section again ourselves before we put it in the repository.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+

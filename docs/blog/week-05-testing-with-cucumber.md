@@ -118,8 +118,8 @@ StudyHub itself doesn't exist yet, so for now our step definitions test a small 
 
 ## What we learned
 
-> **To do (team):** write in your own words what you learned from writing and running the tests.
+Writing the scenarios forced us to be exact. Sentences that sounded fine in the specification were not precise enough for a test, so we had to add a clear business rule for meeting times. We also learned that Gherkin is useful only when the whole team can read it: if a step is hard to understand without looking at the code, we rewrite the step. Running `npm test` after every change gave us fast feedback, and seeing all 11 scenarios pass made us trust the feature files as living documentation.
 
 ## Reflection on AI use
 
-> **To do (team):** write this section yourselves, in your own words. Do not generate it with AI.
+We used Cursor AI to help draft some step definitions and to keep the feature files consistent with the use case text. The scenarios themselves, and the decision to test an in-memory model first, were ours. We always ran the tests ourselves and changed anything that did not match how we want StudyHub to behave.

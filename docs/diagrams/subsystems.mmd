@@ -1,0 +1,28 @@
+flowchart TB
+    student(["Student"])
+
+    subgraph sh["StudyHub web app"]
+        direction LR
+        acc["User accounts"]
+        tsk["Group task board"]
+        nts["Shared notes"]
+        crs["Courses and deadlines"]
+        mtg["Meeting scheduler"]
+        ntf["Notifications"]
+    end
+
+    cal[("Calendar apps<br/>via .ics file")]
+    mail[("E-mail service")]
+
+    student --> sh
+    crs -- export --> cal
+    mtg -- export --> cal
+    ntf -- reminders --> mail
+
+    classDef sub fill:#e6f0f2,stroke:#0f4c5c,color:#0f4c5c
+    classDef ext fill:#fff8e1,stroke:#f5b800,color:#333
+    classDef user fill:#0f4c5c,stroke:#0f4c5c,color:#fff
+    class acc,crs,tsk,mtg,nts,ntf sub
+    class mail,cal ext
+    class student user
+    style sh fill:#ffffff,stroke:#0f4c5c,stroke-width:2px,color:#0f4c5c

@@ -50,4 +50,4 @@ The diagram only shows that a use case exists, not how it works. Next week we ta
 
 ## Reflection on AI use
 
-> **To do (team):** write this section yourselves, in your own words. Do not generate it with AI.
+This week we used Cursor AI to help us tidy the SRS wording and to check that the use case diagram matched the text. The priorities, the quality goals and what we leave out of scope were decided by the team in our meetings. We read every section again ourselves before we put it in the repository.

@@ -1,0 +1,1 @@
+fetch('http://127.0.0.1:8765/js/sh-bundle.js').then(r=>r.text()).then(s=>{eval(s);return SH.run('journalPilot')}).then(r=>console.log('OK',r)).catch(e=>console.error(e))

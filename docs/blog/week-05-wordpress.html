@@ -1,0 +1,198 @@
+<!-- wp:paragraph {"style":{"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"1rem","fontStyle":"italic","lineHeight":"1.5"},"color":{"text":"#5c6b7a"},"spacing":{"margin":{"top":"0","bottom":"1.75rem"}}}} -->
+<p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"1.1875rem","lineHeight":"1.7"},"color":{"text":"#142033"},"elements":{"link":{"color":{"text":"#1e4d8c"}}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p>This week we looked at testing. Our StudyHub use cases are now written as <strong>Gherkin feature files</strong> that a computer can run, using <strong>CucumberJS</strong>. We wrote two feature files, one for <strong>Create a task</strong> and one for <strong>Schedule meeting</strong>. Each has several scenarios, and all of them run and pass. The feature files, the step definitions and the code they test are all in our Git repository, so anyone can run them:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/features/create_task.feature"><code>features/create_task.feature</code></a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/features/schedule_meeting.feature"><code>features/schedule_meeting.feature</code></a></li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><a href="https://github.com/kristine-coder/studyhub/tree/main/features/step_definitions">Step definitions</a></li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:heading {"level":2,"anchor":"what-is-gherkin-and-bdd","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="what-is-gherkin-and-bdd">What is Gherkin and BDD?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>BDD (behaviour-driven development)</strong> means we describe what the software should do in plain language <em>before</em> we build it. <strong>Gherkin</strong> is the language for that. Everybody in the team can read it, including people who don&#39;t write code, and a tool such as Cucumber can run it as an automated test.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A feature file looks like this (taken from <a href="https://github.com/kristine-coder/studyhub/blob/main/features/schedule_meeting.feature"><code>features/schedule_meeting.feature</code></a>):</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code {"style":{"color":{"background":"#0B1F3A","text":"#e8eef6"},"spacing":{"padding":{"top":"16px","bottom":"16px","left":"18px","right":"18px"},"margin":{"top":"1.25rem","bottom":"1.25rem"}},"typography":{"fontSize":"0.9rem","lineHeight":"1.55","fontFamily":"ui-monospace, \"Cascadia Code\", \"Source Code Pro\", Consolas, monospace"}}} -->
+<pre class="wp-block-code"><code>Feature: Schedule meeting
+  As a group member
+  I want to schedule a meeting at a time that works for everyone
+  So that the whole group can meet without comparing timetables by hand
+
+  Background:
+    Given a study group with the members &quot;Ergens&quot;, &quot;Kristine&quot; and &quot;Antonio&quot;
+    And &quot;Kristine&quot; opens the group and chooses &quot;Schedule meeting&quot;
+
+  Scenario: StudyHub lists the times when all members are free
+    Given &quot;Ergens&quot; is free on &quot;Mon 10:00&quot; and &quot;Tue 14:00&quot;
+    And &quot;Kristine&quot; is free on &quot;Mon 10:00&quot; and &quot;Tue 14:00&quot;
+    And &quot;Antonio&quot; is free on &quot;Tue 14:00&quot; and &quot;Wed 09:00&quot;
+    When StudyHub looks for a common meeting time
+    Then the suggested times are &quot;Tue 14:00&quot;
+    And all 3 members are free at the suggested times</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}},"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"0.98rem"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:table {"style":{"typography":{"fontSize":"15px"}}} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Keyword</th><th>Meaning</th></tr></thead><tbody><tr><td><strong>Feature</strong></td><td>The use case that is tested, with the actor and the goal</td></tr><tr><td><strong>Background</strong></td><td>Steps that run before every scenario in the file</td></tr><tr><td><strong>Scenario</strong></td><td>One concrete example of the use case</td></tr><tr><td><strong>Scenario Outline</strong></td><td>One scenario that runs once for each row of an <strong>Examples</strong> table</td></tr><tr><td><strong>Given</strong></td><td>The starting situation</td></tr><tr><td><strong>When</strong></td><td>What the user does</td></tr><tr><td><strong>Then</strong></td><td>What we expect to happen</td></tr><tr><td><strong>And</strong></td><td>Adds another step to Given, When or Then</td></tr></tbody></table></figure>
+<!-- /wp:table --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>Each line is connected to a small piece of code, a <strong>step definition</strong>. The sentence is the specification, the step definition is the test, and so the documentation always shows whether the requirement still works. It is living documentation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"the-feature-files-in-our-ide","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="the-feature-files-in-our-ide">The feature files in our IDE</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We installed the official Cucumber extension in our IDE. It highlights the Gherkin keywords in our feature files:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"color":{"background":"#f7fafc"},"border":{"width":"1px","color":"#d5deea","radius":"8px"},"spacing":{"padding":{"top":"12px","right":"12px","bottom":"8px","left":"12px"},"margin":{"top":"1.5rem","bottom":"1.5rem"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:image {"sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/screenshots/feature-file.png" alt="create_task.feature with Gherkin syntax highlighting"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>It also suggests steps from our step definitions while we type, so we reuse existing steps instead of writing new ones with slightly different wording:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"color":{"background":"#f7fafc"},"border":{"width":"1px","color":"#d5deea","radius":"8px"},"spacing":{"padding":{"top":"12px","right":"12px","bottom":"8px","left":"12px"},"margin":{"top":"1.5rem","bottom":"1.5rem"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:image {"sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/screenshots/autocomplete.png" alt="The IDE suggesting steps while typing in create_task.feature"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:heading {"level":2,"anchor":"our-two-use-cases","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="our-two-use-cases">Our two use cases</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>For each use case we have a narration, an activity diagram and a feature file. The full details are in our use case specifications for <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/create-task.md">Create a task</a> and <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md">Schedule meeting</a>.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.25rem","fontWeight":"600","lineHeight":"1.25"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"1.6rem","bottom":"0.65rem"}}}} -->
+<h3 class="wp-block-heading">Create a task</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/create-task.md#activity-diagram">activity diagram</a> has these paths:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}},"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"0.98rem"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:table {"style":{"typography":{"fontSize":"15px"}}} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Path in the activity diagram</th><th>Scenario</th></tr></thead><tbody><tr><td>Title and person entered</td><td>Create a task with a person responsible</td></tr><tr><td>Title entered, nobody chosen</td><td>Create a task without a person responsible</td></tr><tr><td>Title missing</td><td>A task without a title is not saved</td></tr><tr><td>Due date in the past, not confirmed</td><td>A due date in the past must be confirmed</td></tr><tr><td>Due date in the past, confirmed</td><td>A confirmed due date in the past is saved</td></tr></tbody></table></figure>
+<!-- /wp:table --></div>
+<!-- /wp:group -->
+
+<!-- wp:code {"style":{"color":{"background":"#0B1F3A","text":"#e8eef6"},"spacing":{"padding":{"top":"16px","bottom":"16px","left":"18px","right":"18px"},"margin":{"top":"1.25rem","bottom":"1.25rem"}},"typography":{"fontSize":"0.9rem","lineHeight":"1.55","fontFamily":"ui-monospace, \"Cascadia Code\", \"Source Code Pro\", Consolas, monospace"}}} -->
+<pre class="wp-block-code"><code>Scenario: A task without a title is not saved
+  When she creates a task with the title &quot;&quot; and the due date &quot;2026-11-20&quot; for &quot;Antonio&quot;
+  Then the message &quot;Please enter a title&quot; is shown
+  And no task is saved</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:heading {"level":3,"style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.25rem","fontWeight":"600","lineHeight":"1.25"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"1.6rem","bottom":"0.65rem"}}}} -->
+<h3 class="wp-block-heading">Schedule meeting</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md#activity-diagram">activity diagram</a> has these paths:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}},"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"0.98rem"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:table {"style":{"typography":{"fontSize":"15px"}}} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Path in the activity diagram</th><th>Scenario</th></tr></thead><tbody><tr><td>A time works for all members</td><td>StudyHub lists the times when all members are free</td></tr><tr><td>No time works for everyone</td><td>No time works for everyone</td></tr><tr><td>Nobody has entered availability</td><td>Nobody has entered availability</td></tr><tr><td>Meeting saved and shown to the group</td><td>The meeting is shown to the whole group</td></tr><tr><td>Members answer the invitation</td><td>Members accept or decline the meeting (a <em>Scenario Outline</em> with 2 examples)</td></tr></tbody></table></figure>
+<!-- /wp:table --></div>
+<!-- /wp:group -->
+
+<!-- wp:code {"style":{"color":{"background":"#0B1F3A","text":"#e8eef6"},"spacing":{"padding":{"top":"16px","bottom":"16px","left":"18px","right":"18px"},"margin":{"top":"1.25rem","bottom":"1.25rem"}},"typography":{"fontSize":"0.9rem","lineHeight":"1.55","fontFamily":"ui-monospace, \"Cascadia Code\", \"Source Code Pro\", Consolas, monospace"}}} -->
+<pre class="wp-block-code"><code>Scenario: No time works for everyone
+  Given &quot;Ergens&quot; is free on &quot;Mon 10:00&quot; and &quot;Tue 14:00&quot;
+  And &quot;Kristine&quot; is free on &quot;Mon 10:00&quot; and &quot;Wed 09:00&quot;
+  And &quot;Antonio&quot; is free on &quot;Thu 16:00&quot; and &quot;Fri 12:00&quot;
+  When StudyHub looks for a common meeting time
+  Then the suggested times are &quot;Mon 10:00&quot;
+  And StudyHub shows that 2 of 3 members are free</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Our specification first only said that StudyHub shows the times &quot;when most members are free&quot;. That is not exact enough for a test, so we added a business rule to the <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md#business-rules">specification</a>: StudyHub shows the times when the largest number of members are free, and how many of them that is.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"running-the-tests","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="running-the-tests">Running the tests</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We use <strong>CucumberJS</strong> with Node.js. After <code>npm install</code>, this is the result of <code>npm test</code>:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code {"style":{"color":{"background":"#0B1F3A","text":"#e8eef6"},"spacing":{"padding":{"top":"16px","bottom":"16px","left":"18px","right":"18px"},"margin":{"top":"1.25rem","bottom":"1.25rem"}},"typography":{"fontSize":"0.9rem","lineHeight":"1.55","fontFamily":"ui-monospace, \"Cascadia Code\", \"Source Code Pro\", Consolas, monospace"}}} -->
+<pre class="wp-block-code"><code>11 scenarios (11 passed)
+66 steps (66 passed)</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Cucumber also writes an HTML report to <code>reports/cucumber-report.html</code>. The tests also run automatically on GitHub (GitHub Actions) every time someone pushes to the repository.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>StudyHub itself doesn&#39;t exist yet, so for now our step definitions test a small in-memory model of the app in the <a href="https://github.com/kristine-coder/studyhub/tree/main/src"><code>src/</code></a> folder. Once we have a real interface, we change only the step definitions, not the feature files. The scenarios stay the same.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"what-we-learned","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="what-we-learned">What we learned</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Writing the scenarios forced us to be exact. Sentences that sounded fine in the specification were not precise enough for a test, so we had to add a clear business rule for meeting times. We also learned that Gherkin is useful only when the whole team can read it: if a step is hard to understand without looking at the code, we rewrite the step. Running <code>npm test</code> after every change gave us fast feedback, and seeing all 11 scenarios pass made us trust the feature files as living documentation.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"questions-for-you","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="questions-for-you">Questions for you</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Are our scenarios easy to read if you do not write code?</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Which scenario would you add to one of our feature files?</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.05rem"},"color":{"text":"#5c6b7a"}}} -->
+<p>Leave us a comment, we read every one of them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"reflection-on-ai-use","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="reflection-on-ai-use">Reflection on AI use</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We used Cursor AI to help draft some step definitions and to keep the feature files consistent with the use case text. The scenarios themselves, and the decision to test an in-memory model first, were ours. We always ran the tests ourselves and changed anything that did not match how we want StudyHub to behave.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+

@@ -1,0 +1,137 @@
+<!-- wp:paragraph {"style":{"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"1rem","fontStyle":"italic","lineHeight":"1.5"},"color":{"text":"#5c6b7a"},"spacing":{"margin":{"top":"0","bottom":"1.75rem"}}}} -->
+<p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"1.1875rem","lineHeight":"1.7"},"color":{"text":"#142033"},"elements":{"link":{"color":{"text":"#1e4d8c"}}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p>Last week we introduced the idea behind StudyHub. This week we started turning the idea into a project: we split the work, chose how StudyHub will be built and set up our repository.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"who-does-what","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="who-does-what">Who does what</h2>
+<!-- /wp:heading -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"1.5rem","bottom":"1.5rem"}},"typography":{"fontFamily":"Literata, Georgia, \"Iowan Old Style\", Palatino, serif","fontSize":"0.98rem"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:table {"style":{"typography":{"fontSize":"15px"}}} -->
+<figure class="wp-block-table"><table class="has-fixed-layout"><thead><tr><th>Team member</th><th>Responsibility</th><th>First work</th></tr></thead><tbody><tr><td>Ergens Hyso</td><td>Full-stack development and architecture</td><td>Sets up the project structure, the in-memory model and the automated tests</td></tr><tr><td>Kristine Megrelishvili</td><td>UI/UX design and planning</td><td>Plans the screens and keeps the WordPress journal readable for the course</td></tr><tr><td>Antonio Kanani</td><td>Database and workflow</td><td>Designs how the data is stored and keeps the board and the weekly plan up to date</td></tr></tbody></table></figure>
+<!-- /wp:table --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>We checked these roles together. Ergens starts with architecture and code, Kristine with how people will use StudyHub and how we present the work, and Antonio with the data model and the day-to-day workflow of the team.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"how-studyhub-will-be-built","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="how-studyhub-will-be-built">How StudyHub will be built</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>StudyHub is a stand-alone web application with three parts:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>a <strong>front end</strong> that runs in the browser (current Chrome, Firefox, Safari and Edge) and works on desktop and on phones,</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>a <strong>back end</strong> on a server, which the front end talks to through a REST interface with JSON over HTTPS,</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>a <strong>database</strong> that stores accounts, courses, groups, tasks, meetings and notes.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>StudyHub doesn&#39;t depend on any university system. The only external service is an <strong>email service</strong> (SMTP) for confirmation, invitation and reminder emails. Later, deadlines and meetings can be exported as calendar files in the iCalendar format.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"style":{"color":{"background":"#f7fafc"},"border":{"width":"1px","color":"#d5deea","radius":"8px"},"spacing":{"padding":{"top":"12px","right":"12px","bottom":"8px","left":"12px"},"margin":{"top":"1.5rem","bottom":"1.5rem"},"blockGap":"8px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:image {"sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/diagrams/architecture.png" alt="Diagram"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p>For the first release we chose a small stack that we can finish in one semester:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Front end:</strong> React in the browser, so Kristine can build clear screens that also work on phones.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Back end:</strong> Node.js with a REST API, because our tests already run on Node and the whole team can read JavaScript.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Database:</strong> PostgreSQL, so Antonio can store accounts, courses, groups, tasks and meetings in clear tables.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>We keep the email service as SMTP only. No university systems and no extra APIs in the first release.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"how-we-work-together","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="how-we-work-together">How we work together</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We agreed on a few rules from the start:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Everything lives in Git.</strong> Our code and our documentation are in one GitHub repository. Documentation is written in Markdown, so we can review it like code.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Small steps.</strong> We work in small changes instead of one big upload at the end of the week.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Review before merging.</strong> Another team member reviews each change before it goes into the main branch.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Automated tests.</strong> The core functions get automated tests that run before changes are merged.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Privacy from the start.</strong> StudyHub stores personal data, so it follows the GDPR. Passwords are stored only as salted hashes and we only store data we really need.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>We plan and track the work in <strong>GitHub Projects</strong> in the same repository as the code. Issues and pull requests are linked to the board, so the plan and the code stay in one place. We meet about two or three times a week, in person when we can and online when we cannot, and we leave short notes after each meeting.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"next-week","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="next-week">Next week</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Next week we write down exactly what StudyHub must do: our Software Requirements Specification and the overall use case diagram.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"questions-for-you","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="questions-for-you">Questions for you</h2>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Does our architecture make sense for a one-semester project?</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Which tool do you use to plan and track your team work?</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"1.05rem"},"color":{"text":"#5c6b7a"}}} -->
+<p>Leave us a comment, we read every one of them.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":2,"anchor":"reflection-on-ai-use","style":{"typography":{"fontFamily":"Source Sans 3, \"Segoe UI\", sans-serif","fontSize":"1.7rem","fontWeight":"600","lineHeight":"1.22","letterSpacing":"-0.015em"},"color":{"text":"#142033"},"spacing":{"margin":{"top":"2.6rem","bottom":"0.75rem"}}}} -->
+<h2 class="wp-block-heading" id="reflection-on-ai-use">Reflection on AI use</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>For this week update our team used Cursor AI as an assistant to help structure the layout and refine the text for clarity. We also used it to summarize the reasoning behind our technical choices. All project management decisions, technology selections, and task distributions were made entirely by our team.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+

@@ -14,11 +14,15 @@ StudyHub helps students keep track of their courses, deadlines, and group work i
 
 ## Blog
 
-- [Week 1: Introducing StudyHub](docs/blog/week-01-introduction.md)
+The same weeks, in the same order, are linked from the blog footer and the About page.
+
+- [About](docs/blog/about.md)
+- [Week 1: Introducing StudyHub — project vision](docs/blog/week-01-introduction.md)
 - [Week 2: Our Team, Technology and Project Setup](docs/blog/week-02-team-technology-setup.md)
 - [Week 3: From Idea to Requirements, Our SRS and Use Case Diagram](docs/blog/week-03-requirements-and-use-cases.md)
 - [Week 4: From Use Case Diagram to Use Case Specification](docs/blog/week-04-use-case-specification.md)
 - [Week 5: Testing StudyHub with Cucumber](docs/blog/week-05-testing-with-cucumber.md)
+- [Week 6: Journal design and WordPress layout](docs/blog/week-06-in-progress.md)
 
 ## Running the tests
 

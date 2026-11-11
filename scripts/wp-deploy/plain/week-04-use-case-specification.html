@@ -1,0 +1,158 @@
+<!-- wp:paragraph -->
+<p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Where we are on the road</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>So far our project went like this:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list {"ordered":true} -->
+<ol class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Vision:</strong> group projects are chaotic, so we put courses, deadlines, tasks, meetings and notes into one app.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Overall use case diagram:</strong> the circles and stick figures that show <em>who</em> can do <em>what</em>.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>SRS:</strong> the <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/SRS.md">requirements document</a>, where we chose the scope for this semester.</li>
+<!-- /wp:list-item --></ol>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>The diagram has a weakness. Take <strong>Schedule meeting</strong>: all we did was draw a circle, name it, and say a group member can use it. We don&#39;t yet know <em>how</em> it works. The use case specification is the next step, where we drill deeper.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">The &quot;throw it over the wall&quot; test</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Our lecturer gave us a mental test. Imagine your development team sits in another country. You send them your specification in the evening and go to sleep. When you wake up, will you get what you wanted?</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Today the team on the other side may well be an AI, but the test is the same: <strong>can someone else, or something else, build the feature from the text alone, without asking us a single question?</strong> If the answer is no, the specification isn&#39;t finished.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">A reminder: what makes a good use case</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong>Actors are roles, not people.</strong> &quot;Student&quot; or &quot;Group Owner&quot;, not &quot;Kristine&quot;. Actors can be people, systems or devices.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>A use case is named as a goal:</strong> a verb plus an object, like <em>Manage tasks</em> or <em>Schedule meeting</em>.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Only visible things count.</strong> A use case describes what is meaningful to the actor, not our internal database tables.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong>Notation:</strong> we use standard UML, with stick figures, ovals, a system boundary, «include», «extend» and &quot;is a&quot; arrows. We don&#39;t change the standard for our own project.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:image {"sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/diagrams/use-case-diagram.png" alt="StudyHub use case diagram"/><figcaption class="wp-element-caption">Our overall use case diagram. The Group Owner &quot;is a&quot; Student; Schedule meeting always includes Find common meeting time; Export calendar and Send reminders are optional extensions.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Not a waterfall</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>One more lesson from the lecture: we don&#39;t finish all the specifying first and only then build. We specify, learn our technology and, from next week, start testing the user interface, all at the same time. That is how the RUP workflows are meant to be used, and it is why we are already exploring our tech stack while we write specifications.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">What a use case specification contains</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>For each use case we write down:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table -->
+<figure class="wp-block-table"><table><thead><tr><th>Part</th><th>Question it answers</th></tr></thead><tbody><tr><td>Goal</td><td>What does the actor want to achieve?</td></tr><tr><td>Actors</td><td>Who is involved?</td></tr><tr><td>Preconditions</td><td>What must be true before it starts?</td></tr><tr><td>Main flow</td><td>What happens, step by step, when everything goes well?</td></tr><tr><td>Alternative flows</td><td>What happens when something differs or goes wrong?</td></tr><tr><td>Postconditions</td><td>What is true afterwards?</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Our two use case specifications</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li><strong><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/create-task.md">Create a task</a>:</strong> a group member puts a piece of work on the board and says who does it. Alternative flows cover a missing title, a task without a person responsible and a due date in the past.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li><strong><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md">Schedule meeting</a>:</strong> a group finds a time that works for everyone. It always includes the use case <em>Find common meeting time</em>. Alternative flows cover no time that works for everyone and nobody having entered availability.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Each specification also has an activity diagram that shows every path through the use case.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"width":"420px","sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/diagrams/activity-create-task.png" alt="Activity diagram: Create a task" style="width:420px"/><figcaption class="wp-element-caption">Activity diagram for Create a task.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"width":"420px","sizeSlug":"large","align":"center"} -->
+<figure class="wp-block-image aligncenter size-large is-resized"><img src="https://raw.githubusercontent.com/kristine-coder/studyhub/main/docs/diagrams/activity-schedule-meeting.png" alt="Activity diagram: Schedule meeting" style="width:420px"/><figcaption class="wp-element-caption">Activity diagram for Schedule meeting.</figcaption></figure>
+<!-- /wp:image -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">What we learned</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Writing the specifications showed us gaps in our SRS that the diagram hid. We had never decided what StudyHub suggests when no time works for everyone, or what a task without an owner looks like. It is better to find that out now than when we are coding.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The next test is the &quot;over the wall&quot; one: could another team, or an AI, build these two use cases from our text alone? We will check this ourselves and adapt the specifications until the answer is yes.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Next week</h3>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>We start thinking about <strong>testing the user interface</strong>. Our specifications give us a starting point, because every alternative flow is a test case waiting to be written.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><em>Documents for this project live in our Git repository: the SRS, the use case diagram and the use case specifications are in the <code>docs/</code> folder.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Questions for you</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Could you build Create a task or Schedule meeting from our specification alone?</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Which alternative flow did we miss?</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Tell us in the comments below.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Reflection on AI use</h3>
+<!-- /wp:heading -->
+
+<!-- wp:group {"style":{"color":{"background":"#fff8e1"},"spacing":{"padding":{"top":"20px","right":"24px","bottom":"20px","left":"24px"}},"border":{"left":{"color":"#f5b800","width":"4px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p><strong>To do (team):</strong> write this section yourselves, in your own words. Do not generate it with AI.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->

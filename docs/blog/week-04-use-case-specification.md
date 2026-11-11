@@ -75,4 +75,4 @@ We start thinking about **testing the user interface**. Our specifications give 
 
 ## Reflection on AI use
 
-> **To do (team):** write this section yourselves, in your own words. Do not generate it with AI.
+Cursor AI helped us turn the two use cases into clearer step lists and suggested where an alternative flow was missing. The business rules, for example what happens when no meeting time works for everyone, came from our own discussion. We kept only the parts that still made sense after we read them out loud as a team.

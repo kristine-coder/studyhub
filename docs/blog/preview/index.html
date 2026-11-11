@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StudyHub journal — design preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+  :root {
+    --navy: #0B1F3A;
+    --page: #e7eef6;
+    --card: #ffffff;
+    --ink: #142033;
+    --muted: #5c6b7a;
+    --line: #d5deea;
+    --link: #1e4d8c;
+    --measure: 42rem;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--page); color: var(--ink); }
+  body { font-family: Literata, Georgia, "Iowan Old Style", Palatino, serif; font-size: 1.125rem; line-height: 1.7; }
+  a { color: var(--link); }
+  button { font: inherit; }
+  h1, h2, .brand strong, .foot-brand strong, .weeks strong, .foot h2 {
+    font-family: "Source Sans 3", "Segoe UI", sans-serif;
+    letter-spacing: -0.02em;
+  }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+  .preview-bar {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    padding: 8px 16px; background: #fff; color: var(--navy);
+    border-bottom: 1px solid var(--line); font-family: "Source Sans 3", sans-serif; font-size: 14px;
+  }
+  .preview-bar span { margin-right: 8px; color: var(--muted); }
+  .preview-bar button {
+    background: #fff; color: var(--navy); border: 1px solid var(--line);
+    border-radius: 999px; padding: 4px 12px; cursor: pointer;
+  }
+  .preview-bar button[aria-current="true"] { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  .bar { min-height: 72px; display: flex; align-items: center; background: var(--navy); color: #fff; }
+  .bar-inner, .foot-inner { width: min(1080px, calc(100% - 48px)); margin: 0 auto; }
+  .bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 72px; }
+  .brand, .nav { display: flex; align-items: center; gap: 14px; }
+  .brand { color: #fff; text-decoration: none; }
+  .brand img, .foot-brand img { height: 40px; width: auto; display: block; background: #fff; border-radius: 6px; }
+  .brand strong, .foot-brand strong { font-weight: 700; font-size: 22px; color: #fff; }
+  .nav a { color: #fff; text-decoration: none; font-family: "Source Sans 3", sans-serif; font-size: 17px; }
+  .nav a.github {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #fff; color: var(--navy); text-decoration: none;
+    font-family: "Source Sans 3", sans-serif; font-weight: 700; font-size: 16px;
+    padding: 8px 14px 8px 10px; border-radius: 8px;
+  }
+  .github svg { width: 30px; height: 30px; display: block; }
+
+  main { background: var(--page); }
+  .sheet { width: min(1080px, calc(100% - 48px)); margin: 0 auto; padding: 32px 0 56px; }
+  main.post .sheet, #about .sheet {
+    width: min(var(--measure), calc(100% - 48px));
+    background: var(--card); margin-top: 28px; margin-bottom: 36px;
+    padding: 36px 40px 48px; border-radius: 10px;
+    box-shadow: 0 1px 0 rgba(11, 31, 58, 0.06);
+  }
+  h1 { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.15; color: var(--navy); margin: 0 0 0.35em; }
+  h2 { font-size: 1.55rem; font-weight: 700; line-height: 1.25; color: var(--navy); margin: 2.2rem 0 0.55rem; }
+  .kicker { color: var(--muted); margin: 0 0 1.4rem; font-size: 1rem; }
+  p { margin: 0 0 1em; }
+  ul, ol { padding-left: 1.2em; }
+  li { margin: 0.3em 0; }
+  figure { margin: 1.6rem 0; background: #f7fafc; border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 4px; }
+  figcaption { color: var(--muted); font-size: 0.92rem; line-height: 1.45; text-align: center; margin-top: 8px; }
+  pre {
+    background: var(--navy); color: #e8eef6; border-radius: 8px;
+    padding: 16px 18px; overflow: auto; font-size: 0.9rem; line-height: 1.55;
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Consolas, monospace;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.98rem; margin: 1rem 0 1.4rem; }
+  th, td { border-bottom: 1px solid var(--line); text-align: left; padding: 8px 10px; vertical-align: top; }
+  blockquote { margin: 1.1rem 0; padding: 0 0 0 16px; border-left: 3px solid var(--link); }
+  .comments { margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid var(--line); font-family: "Source Sans 3", sans-serif; }
+  .comments h2 { margin-top: 0; margin-bottom: 12px; }
+  .comments textarea { width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; font: inherit; background: #fff; resize: vertical; }
+  .comments button { margin-top: 12px; background: var(--navy); color: #fff; border: 0; border-radius: 6px; padding: 10px 16px; font-weight: 700; cursor: pointer; }
+  .weeks { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+  .weeks a {
+    display: grid; grid-template-columns: 92px 1fr; gap: 8px 16px; align-items: baseline;
+    background: #fff; color: inherit; text-decoration: none;
+    border-radius: 10px; padding: 16px 20px; border-left: 4px solid var(--navy);
+  }
+  .weeks a:hover { border-left-color: var(--link); }
+  .weeks span { font-family: "Source Sans 3", sans-serif; font-weight: 700; font-size: 14px; color: var(--link); }
+  .weeks strong { font-size: 1.25rem; font-weight: 700; color: var(--navy); line-height: 1.25; }
+  .weeks small { grid-column: 2; color: var(--muted); font-size: 15px; }
+
+  .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 0.5rem 0; }
+  .team figure { margin: 0; background: transparent; border: 0; padding: 0; }
+  .team img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }
+  .team figcaption { text-align: center; color: var(--ink); font-size: 0.95rem; }
+  .team em { color: var(--muted); }
+
+  .slot {
+    border: 1px dashed #9eb0c6; background: #f7fafc; border-radius: 8px;
+    padding: 28px 16px; text-align: center; color: var(--muted); font-size: 0.95rem; margin: 1.4rem 0;
+  }
+
+  .foot { background: var(--navy); color: #fff; padding: 32px 0 40px; }
+  .foot-inner { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
+  .foot-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: #fff; text-decoration: none; }
+  .foot p { color: #c5d4e6; font-family: "Source Sans 3", sans-serif; font-size: 15px; line-height: 1.45; margin: 0; }
+  .foot h2 { font-size: 20px; margin: 0 0 12px; color: #fff; }
+  .catalog { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 28px; font-family: "Source Sans 3", sans-serif; font-size: 16px; line-height: 1.35; }
+  .catalog a { color: #d6e4f5; text-decoration: none; }
+  .catalog a:hover { color: #fff; }
+
+  .gh { background: #fff; color: #1f2328; min-height: 70vh; }
+  .gh-top { background: #f6f8fa; border-bottom: 1px solid #d1d9e0; padding: 16px 0; font-family: -apple-system, Segoe UI, sans-serif; font-size: 14px; }
+  .gh-top .bar-inner { min-height: 0; }
+  .repo { font-weight: 600; }
+  .gh .sheet { max-width: 48rem; font-family: -apple-system, Segoe UI, sans-serif; font-size: 16px; line-height: 1.6; }
+  .gh h1 { font-family: -apple-system, Segoe UI, sans-serif; font-size: 2rem; font-weight: 600; letter-spacing: 0; }
+  .gh h2 { font-family: -apple-system, Segoe UI, sans-serif; font-size: 1.5rem; font-weight: 600; border-bottom: 1px solid #d1d9e0; padding-bottom: 0.3em; letter-spacing: 0; }
+  .gh a { color: #0969da; }
+  .note { font-size: 14px; color: #59636e; }
+
+  [hidden] { display: none !important; }
+  @media (max-width: 720px) {
+    .bar-inner, .foot-inner, .sheet { width: calc(100% - 32px); }
+    .bar-inner { flex-wrap: wrap; padding: 12px 0; }
+    .team, .catalog, .weeks a { grid-template-columns: 1fr; }
+    .weeks small { grid-column: 1; }
+    main.post .sheet, #about .sheet { padding: 24px 18px 32px; }
+    .foot-inner { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="preview-bar">
+  <span>Preview</span>
+  <button type="button" data-view="home" aria-current="true">Journal</button>
+  <button type="button" data-view="about">About</button>
+  <button type="button" data-view="github">GitHub</button>
+</div>
+
+<header class="bar" data-chrome="site">
+  <div class="bar-inner">
+    <a class="brand" href="#home" data-go="home">
+      <img src="https://studyhub185.wordpress.com/wp-content/uploads/2026/10/studyhub-profile-text.png" alt="">
+      <strong>StudyHub</strong>
+    </a>
+    <div class="nav">
+      <a href="#about" data-go="about">About</a>
+      <a class="github" href="https://github.com/kristine-coder/studyhub" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+  <div class="sheet">
+    <h1>StudyHub</h1>
+    <p class="lede">A weekly log of a planner for student teams. Each week we write what we decided, and we link the same files that are on GitHub.</p>
+    <div class="weeks">
+      <a href="#week-1" data-go="week-1"><span>Week 1</span><strong>Introducing StudyHub — project vision</strong><small>The idea, and who it is for.</small></a>
+      <a href="#week-2" data-go="week-2"><span>Week 2</span><strong>Our Team, Technology and Project Setup</strong><small>Roles, and how the app will be built.</small></a>
+      <a href="#week-3" data-go="week-3"><span>Week 3</span><strong>From Idea to Requirements, Our SRS and Use Case Diagram</strong><small>What StudyHub must do.</small></a>
+      <a href="#week-4" data-go="week-4"><span>Week 4</span><strong>From Use Case Diagram to Use Case Specification</strong><small>Two use cases, written out in full.</small></a>
+      <a href="#week-5" data-go="week-5"><span>Week 5</span><strong>Testing StudyHub with Cucumber</strong><small>The same use cases, as tests we can run.</small></a>
+      <a href="#week-6" data-go="week-6"><span>Week 6</span><strong>Journal design and WordPress layout</strong><small>Not written yet. The page is ready for next week.</small></a>
+    </div>
+  </div>
+</main>
+
+<main id="week-1" class="post" hidden>
+  <div class="sheet">
+    <h1>Week 1: Introducing StudyHub — project vision</h1>
+    <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<p>You probably know the situation. It&#39;s Sunday evening, the group report is due on Monday, and somebody writes in the chat: &quot;Wait, who was doing part three?&quot; Nobody answers for an hour. Then three people answer at once, and all three of them thought it was someone else.</p>
+<p>We have been in that chat. More than once. That&#39;s where <strong>StudyHub</strong> comes from.</p>
+<h2>Project vision</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Name</strong></td>
+<td><strong>StudyHub</strong> — a web app for student teams</td>
+</tr>
+<tr>
+<td><strong>Useful function</strong></td>
+<td>One place for courses, deadlines, tasks, meetings and group notes, so the team spends less time coordinating and more time on the actual work</td>
+</tr>
+<tr>
+<td><strong>Objective (end of semester)</strong></td>
+<td>A student team can run a group project in StudyHub without a separate spreadsheet, without endless &quot;who&#39;s doing what?&quot; messages, and without missing a deadline because nobody reminded anyone</td>
+</tr>
+</tbody></table>
+<p>StudyHub does <strong>not</strong> replace Moodle and does not grade anyone. It helps small groups organize themselves.</p>
+<h2>The problem</h2>
+<p>Group work itself is fine. Organizing it is the painful part. Deadlines sit in Moodle, tasks live in someone&#39;s head, notes are split across Google Docs, WhatsApp and a photo of a whiteboard, and finding a meeting time takes twenty messages. By the time everything is sorted out, half the energy for the actual work is gone.</p>
+<h2>What we are building</h2>
+<p>In StudyHub you add your courses and deadlines, create a group with your teammates, and split the work into tasks. Every task has one owner, so &quot;I thought you were doing it&quot; is harder to use as an excuse. The dashboard shows what&#39;s due next across your courses and groups. When you need to meet, everyone enters when they are free and StudyHub suggests a time that works. Shared notes stay in one place instead of five apps.</p>
+<p><strong>Who it is for:</strong> university students in project groups — basically people like us. No training needed; the first screen should make sense within ten seconds.</p>
+<h2>Subsystems</h2>
+<p>We split the app into <strong>six subsystems</strong>. Each one is small enough for one person to own in the team, and together they cover the whole product. This keeps the project manageable for one semester.</p>
+<p><figure><img src="../../diagrams/subsystems.png" alt="StudyHub subsystems and outside systems"><figcaption>StudyHub subsystems and outside systems</figcaption></figure></p>
+<p><em>Figure: the six subsystems inside StudyHub and the two outside systems they talk to.</em></p>
+<table>
+<thead>
+<tr>
+<th>Subsystem</th>
+<th>What it does (function)</th>
+<th>Objective</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>User accounts</strong></td>
+<td>Sign up, log in, profile, group membership</td>
+<td>Every student and every group has its own secure space</td>
+</tr>
+<tr>
+<td><strong>Courses and deadlines</strong></td>
+<td>Add courses and due dates</td>
+<td>No deadline sneaks up on the team unnoticed</td>
+</tr>
+<tr>
+<td><strong>Group task board</strong></td>
+<td>Tasks with one owner and status (to do, in progress, done)</td>
+<td>Everyone sees who is doing what</td>
+</tr>
+<tr>
+<td><strong>Meeting scheduler</strong></td>
+<td>Members enter free times; StudyHub suggests a common slot</td>
+<td>Replace long chat polls when scheduling meetings</td>
+</tr>
+<tr>
+<td><strong>Shared notes</strong></td>
+<td>Notes the whole group can read and edit</td>
+<td>One place for meeting notes and decisions</td>
+</tr>
+<tr>
+<td><strong>Notifications</strong></td>
+<td>E-mail for sign-up, invitations, deadlines, tasks and meetings</td>
+<td>Nobody has to chase the group by hand for every reminder</td>
+</tr>
+</tbody></table>
+<h2>Dependencies on outside systems</h2>
+<p>StudyHub is <strong>stand-alone</strong>: it does not connect to Moodle or other university systems. We only rely on:</p>
+<ol>
+<li><strong>E-mail service (SMTP)</strong> — confirmations, group invitations and reminders.</li>
+<li><strong>The student&#39;s calendar app (optional)</strong> — export of deadlines and meetings as an <strong>.ics</strong> file (e.g. Google Calendar, Outlook). We do not call Google or Microsoft APIs in the first release.</li>
+</ol>
+<h2>Assumptions</h2>
+<p>Every project rests on a few guesses. Ours:</p>
+<ul>
+<li>Study groups are <strong>small</strong> (about 2–6 people).</li>
+<li>Each student has <strong>their own account</strong>, a modern browser, internet and an e-mail address.</li>
+<li>Students are willing to <strong>enter courses and deadlines themselves</strong> (StudyHub is not fed automatically from Moodle).</li>
+<li>Teammates accept <strong>sharing free times</strong> with the group for scheduling.</li>
+</ul>
+<p>If one of these turns out to be wrong, we will adjust the design — and we will say so in a later blog post.</p>
+<h2>What we are not building (scope)</h2>
+<p>One semester goes by fast, so we decided early what to leave out:</p>
+<ul>
+<li>Not a learning management system — lecturers do not upload material or grades here.</li>
+<li>No built-in video calls — groups can paste a link to Zoom, Meet or whatever they already use.</li>
+<li>No contribution tracking or grading — StudyHub supports the team; it does not watch or score members.</li>
+</ul>
+<p>More detail lives in our <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/SRS.md">Software Requirements Specification</a> on GitHub.</p>
+<h2>Who we are</h2>
+<p>We are three computer science exchange students at DHBW Karlsruhe:</p>
+<ul>
+<li><strong>Antonio Kanani</strong> — keeps the group organized; if there is a plan, he probably wrote it. <em>University of Vlora, Albania</em></li>
+<li><strong>Ergens Hyso</strong> — backend and problem-solving in Python or Java. <em>University of Vlora, Albania</em></li>
+<li><strong>Kristine Megrelishvili</strong> — UI/UX and making sure people understand the product. <em>Georgia</em></li>
+</ul>
+<h2>Next week</h2>
+<p>Next week we pick our <strong>technology stack</strong>, agree <strong>roles</strong>, and set up GitHub and the project board. That will be our Week 2 post.</p>
+<h2>Questions for you</h2><ul><li>What is the most chaotic part of group work for you?</li><li>Which part of StudyHub would you actually use first?</li><li>Is something missing? What would make you switch from your group chat?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>Because this is a new repository we created all new files and decided to storage each file under a specific name to make it easier to find everything. We also gathered with each other and kept our original ideas of our project, we didnt used AI on the git this week but we used Cursor AI to fix the theme on our wordpress page.</p>
+
+    <section class="comments">
+      <h2>Comments</h2>
+      <form action="#" onsubmit="return false">
+        <label class="sr-only" for="comment-1">Comment</label>
+        <textarea id="comment-1" rows="5" placeholder="Write a comment…"></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<main id="week-2" class="post" hidden>
+  <div class="sheet">
+    <h1>Week 2: Our Team, Technology and Project Setup</h1>
+    <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<p>Last week we introduced the idea behind StudyHub. This week we started turning the idea into a project: we split the work, chose how StudyHub will be built and set up our repository.</p>
+<h2>Who does what</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Team member</th>
+<th align="left">Responsibility</th>
+<th align="left">First work</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Ergens Hyso</td>
+<td align="left">Full-stack development and architecture</td>
+<td align="left">Sets up the project structure, the in-memory model and the automated tests</td>
+</tr>
+<tr>
+<td align="left">Kristine Megrelishvili</td>
+<td align="left">UI/UX design and planning</td>
+<td align="left">Plans the screens and keeps the WordPress journal readable for the course</td>
+</tr>
+<tr>
+<td align="left">Antonio Kanani</td>
+<td align="left">Database and workflow</td>
+<td align="left">Designs how the data is stored and keeps the board and the weekly plan up to date</td>
+</tr>
+</tbody></table>
+<p>We checked these roles together. Ergens starts with architecture and code, Kristine with how people will use StudyHub and how we present the work, and Antonio with the data model and the day-to-day workflow of the team.</p>
+<h2>How StudyHub will be built</h2>
+<p>StudyHub is a stand-alone web application with three parts:</p>
+<ul>
+<li>a <strong>front end</strong> that runs in the browser (current Chrome, Firefox, Safari and Edge) and works on desktop and on phones,</li>
+<li>a <strong>back end</strong> on a server, which the front end talks to through a REST interface with JSON over HTTPS,</li>
+<li>a <strong>database</strong> that stores accounts, courses, groups, tasks, meetings and notes.</li>
+</ul>
+<p>StudyHub doesn&#39;t depend on any university system. The only external service is an <strong>email service</strong> (SMTP) for confirmation, invitation and reminder emails. Later, deadlines and meetings can be exported as calendar files in the iCalendar format.</p>
+<figure><img src="../../diagrams/architecture.png" alt="StudyHub architecture"><figcaption>StudyHub architecture: browser, back end, database and email.</figcaption></figure><p>For the first release we chose a small stack that we can finish in one semester:</p>
+<ul>
+<li><strong>Front end:</strong> React in the browser, so Kristine can build clear screens that also work on phones.</li>
+<li><strong>Back end:</strong> Node.js with a REST API, because our tests already run on Node and the whole team can read JavaScript.</li>
+<li><strong>Database:</strong> PostgreSQL, so Antonio can store accounts, courses, groups, tasks and meetings in clear tables.</li>
+</ul>
+<p>We keep the email service as SMTP only. No university systems and no extra APIs in the first release.</p>
+<h2>How we work together</h2>
+<p>We agreed on a few rules from the start:</p>
+<ul>
+<li><strong>Everything lives in Git.</strong> Our code and our documentation are in one GitHub repository. Documentation is written in Markdown, so we can review it like code.</li>
+<li><strong>Small steps.</strong> We work in small changes instead of one big upload at the end of the week.</li>
+<li><strong>Review before merging.</strong> Another team member reviews each change before it goes into the main branch.</li>
+<li><strong>Automated tests.</strong> The core functions get automated tests that run before changes are merged.</li>
+<li><strong>Privacy from the start.</strong> StudyHub stores personal data, so it follows the GDPR. Passwords are stored only as salted hashes and we only store data we really need.</li>
+</ul>
+<p>We plan and track the work in <strong>GitHub Projects</strong> in the same repository as the code. Issues and pull requests are linked to the board, so the plan and the code stay in one place. We meet about two or three times a week, in person when we can and online when we cannot, and we leave short notes after each meeting.</p>
+<h2>Next week</h2>
+<p>Next week we write down exactly what StudyHub must do: our Software Requirements Specification and the overall use case diagram.</p>
+<h2>Questions for you</h2><ul><li>Does our architecture make sense for a one-semester project?</li><li>Which tool do you use to plan and track your team work?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>For this week update our team used Cursor AI as an assistant to help structure the layout and refine the text for clarity. We also used it to summarize the reasoning behind our technical choices. All project management decisions, technology selections, and task distributions were made entirely by our team.</p>
+
+    <section class="comments">
+      <h2>Comments</h2>
+      <form action="#" onsubmit="return false">
+        <label class="sr-only" for="comment-2">Comment</label>
+        <textarea id="comment-2" rows="5" placeholder="Write a comment…"></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<main id="week-3" class="post" hidden>
+  <div class="sheet">
+    <h1>Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</h1>
+    <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<p>Last week we split the work and chose how StudyHub will be built. This week we wrote down exactly <strong>what</strong> StudyHub must do. We did that in two documents: a Software Requirements Specification (SRS) and an overall use case diagram.</p>
+<h2>Our SRS</h2>
+<p>Our <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/SRS.md">SRS</a> follows the RUP template, with IEEE 830 as guidance. It has four parts:</p>
+<ol>
+<li><strong>Introduction:</strong> purpose, scope, definitions and references.</li>
+<li><strong>Overall description:</strong> what kind of product StudyHub is, its main functions, its users, constraints and assumptions.</li>
+<li><strong>Specific requirements:</strong> what the system must do (functionality) and how well it must do it (usability, reliability, performance, supportability, design constraints, interfaces, licensing and standards).</li>
+<li><strong>Supporting information.</strong></li>
+</ol>
+<h2>Choosing the scope for this semester</h2>
+<p>We can&#39;t build everything in one semester, so we gave every group of requirements a priority. The first release has everything marked <em>High</em>. <em>Medium</em> and <em>Low</em> come later if time allows.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Priority</th>
+<th align="left">Requirements</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">High</td>
+<td align="left">Accounts, courses and deadlines, study groups, tasks, dashboard</td>
+</tr>
+<tr>
+<td align="left">Medium</td>
+<td align="left">Availability and meetings, shared notes, email notifications</td>
+</tr>
+<tr>
+<td align="left">Low</td>
+<td align="left">Calendar export (iCalendar)</td>
+</tr>
+</tbody></table>
+<p>We also wrote down the quality we expect, with numbers we can check later. Some examples:</p>
+<ul>
+<li>A new user can register, create a group and add a first task within <strong>5 minutes</strong> without help.</li>
+<li><strong>95 %</strong> of pages and actions respond within <strong>2 seconds</strong>.</li>
+<li>The interface works on phones from <strong>360 px</strong> wide and follows <strong>WCAG 2.1 level AA</strong>.</li>
+</ul>
+<h2>The overall use case diagram</h2>
+<p><figure><img src="../../diagrams/use-case-diagram.png" alt="StudyHub use case diagram"><figcaption>StudyHub use case diagram</figcaption></figure></p>
+<p>The diagram shows <strong>who</strong> can do <strong>what</strong> in StudyHub:</p>
+<ul>
+<li><strong>Actors</strong> are roles, not people. A <em>Visitor</em> can only register. A <em>Student</em> uses most of StudyHub. A <em>Group Owner</em> &quot;is a&quot; Student who can also manage the members of a group. The <em>Email Service</em> is an external system, so it is an actor too.</li>
+<li><strong>Use cases</strong> are named as goals, a verb plus an object: <em>Manage tasks</em>, <em>Schedule meeting</em>, <em>View dashboard</em>.</li>
+<li><strong>«include»</strong> means one use case always uses another: <em>Schedule meeting</em> always includes <em>Find common meeting time</em>.</li>
+<li><strong>«extend»</strong> means optional extra behaviour: <em>Send reminders</em> extends <em>Manage tasks</em> and <em>Schedule meeting</em>, and <em>Export calendar</em> extends <em>View dashboard</em>.</li>
+</ul>
+<h2>What StudyHub will not do</h2>
+<p>Writing the SRS also meant deciding what is out of scope. StudyHub is not a learning management system like Moodle, has no video calls and does no grading.</p>
+<h2>Next week</h2>
+<p>The diagram only shows that a use case exists, not how it works. Next week we take two use cases (<em>Create a task</em> and <em>Schedule meeting</em>) and write a detailed specification for each.</p>
+<h2>Questions for you</h2><ul><li>Do our priorities (High, Medium, Low) look right to you?</li><li>Are our quality goals, like 2 seconds per page, realistic?</li><li>Is anything in the use case diagram unclear?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>This week we used Cursor AI to help us tidy the SRS wording and to check that the use case diagram matched the text. The priorities, the quality goals and what we leave out of scope were decided by the team in our meetings. We read every section again ourselves before we put it in the repository.</p>
+
+    <section class="comments">
+      <h2>Comments</h2>
+      <form action="#" onsubmit="return false">
+        <label class="sr-only" for="comment-3">Comment</label>
+        <textarea id="comment-3" rows="5" placeholder="Write a comment…"></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<main id="week-4" class="post" hidden>
+  <div class="sheet">
+    <h1>Week 4: From Use Case Diagram to Use Case Specification</h1>
+    <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani.</em></p>
+<h2>Where we are on the road</h2>
+<p>So far our project went like this:</p>
+<ol>
+<li><strong>Vision:</strong> group projects are chaotic, so we put courses, deadlines, tasks, meetings and notes into one app.</li>
+<li><strong>Overall use case diagram:</strong> the circles and stick figures that show <em>who</em> can do <em>what</em>.</li>
+<li><strong>SRS:</strong> the <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/SRS.md">requirements document</a>, where we chose the scope for this semester.</li>
+</ol>
+<p>The diagram has a weakness. Take <strong>Schedule meeting</strong>: all we did was draw a circle, name it, and say a group member can use it. We don&#39;t yet know <em>how</em> it works. The use case specification is the next step, where we drill deeper.</p>
+<h2>The &quot;throw it over the wall&quot; test</h2>
+<p>Our lecturer gave us a mental test. Imagine your development team sits in another country. You send them your specification in the evening and go to sleep. When you wake up, will you get what you wanted?</p>
+<p>Today the team on the other side may well be an AI, but the test is the same: <strong>can someone else, or something else, build the feature from the text alone, without asking us a single question?</strong> If the answer is no, the specification isn&#39;t finished.</p>
+<h2>A reminder: what makes a good use case</h2>
+<ul>
+<li><strong>Actors are roles, not people.</strong> &quot;Student&quot; or &quot;Group Owner&quot;, not &quot;Kristine&quot;. Actors can be people, systems or devices.</li>
+<li><strong>A use case is named as a goal:</strong> a verb plus an object, like <em>Manage tasks</em> or <em>Schedule meeting</em>.</li>
+<li><strong>Only visible things count.</strong> A use case describes what is meaningful to the actor, not our internal database tables.</li>
+<li><strong>Notation:</strong> we use standard UML, with stick figures, ovals, a system boundary, «include», «extend» and &quot;is a&quot; arrows. We don&#39;t change the standard for our own project.</li>
+</ul>
+<p><figure><img src="../../diagrams/use-case-diagram.png" alt="StudyHub use case diagram"><figcaption>StudyHub use case diagram</figcaption></figure></p>
+<p><em>Our overall use case diagram. The Group Owner &quot;is a&quot; Student; Schedule meeting always includes Find common meeting time; Export calendar and Send reminders are optional extensions.</em></p>
+<h2>Not a waterfall</h2>
+<p>One more lesson from the lecture: we don&#39;t finish all the specifying first and only then build. We specify, learn our technology and, from next week, start testing the user interface, all at the same time. That is how the RUP workflows are meant to be used, and it is why we are already exploring our tech stack while we write specifications.</p>
+<h2>What a use case specification contains</h2>
+<p>For each use case we write down:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Part</th>
+<th align="left">Question it answers</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Goal</td>
+<td align="left">What does the actor want to achieve?</td>
+</tr>
+<tr>
+<td align="left">Actors</td>
+<td align="left">Who is involved?</td>
+</tr>
+<tr>
+<td align="left">Preconditions</td>
+<td align="left">What must be true before it starts?</td>
+</tr>
+<tr>
+<td align="left">Main flow</td>
+<td align="left">What happens, step by step, when everything goes well?</td>
+</tr>
+<tr>
+<td align="left">Alternative flows</td>
+<td align="left">What happens when something differs or goes wrong?</td>
+</tr>
+<tr>
+<td align="left">Postconditions</td>
+<td align="left">What is true afterwards?</td>
+</tr>
+</tbody></table>
+<h2>Our two use case specifications</h2>
+<ul>
+<li><strong><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/create-task.md">Create a task</a>:</strong> a group member puts a piece of work on the board and says who does it. Alternative flows cover a missing title, a task without a person responsible and a due date in the past.</li>
+<li><strong><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md">Schedule meeting</a>:</strong> a group finds a time that works for everyone. It always includes the use case <em>Find common meeting time</em>. Alternative flows cover no time that works for everyone and nobody having entered availability.</li>
+</ul>
+<p>Each specification also has an activity diagram that shows every path through the use case.</p>
+<p><figure><img src="../../diagrams/activity-create-task.png" alt="Activity diagram: Create a task"><figcaption>Activity diagram: Create a task</figcaption></figure></p>
+<p><em>Activity diagram for Create a task.</em></p>
+<p><figure><img src="../../diagrams/activity-schedule-meeting.png" alt="Activity diagram: Schedule meeting"><figcaption>Activity diagram: Schedule meeting</figcaption></figure></p>
+<p><em>Activity diagram for Schedule meeting.</em></p>
+<h2>What we learned</h2>
+<p>Writing the specifications showed us gaps in our SRS that the diagram hid. We had never decided what StudyHub suggests when no time works for everyone, or what a task without an owner looks like. It is better to find that out now than when we are coding.</p>
+<p>The next test is the &quot;over the wall&quot; one: could another team, or an AI, build these two use cases from our text alone? We will check this ourselves and adapt the specifications until the answer is yes.</p>
+<h2>Next week</h2>
+<p>We start thinking about <strong>testing the user interface</strong>. Our specifications give us a starting point, because every alternative flow is a test case waiting to be written.</p>
+<p><em>Documents for this project live in our Git repository: the SRS, the use case diagram and the use case specifications are in the <code>docs/</code> folder.</em></p>
+<h2>Questions for you</h2><ul><li>Could you build Create a task or Schedule meeting from our specification alone?</li><li>Which alternative flow did we miss?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>Cursor AI helped us turn the two use cases into clearer step lists and suggested where an alternative flow was missing. The business rules, for example what happens when no meeting time works for everyone, came from our own discussion. We kept only the parts that still made sense after we read them out loud as a team.</p>
+
+    <section class="comments">
+      <h2>Comments</h2>
+      <form action="#" onsubmit="return false">
+        <label class="sr-only" for="comment-4">Comment</label>
+        <textarea id="comment-4" rows="5" placeholder="Write a comment…"></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<main id="week-5" class="post" hidden>
+  <div class="sheet">
+    <h1>Week 5: Testing StudyHub with Cucumber</h1>
+    <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<p>This week we looked at testing. Our StudyHub use cases are now written as <strong>Gherkin feature files</strong> that a computer can run, using <strong>CucumberJS</strong>. We wrote two feature files, one for <strong>Create a task</strong> and one for <strong>Schedule meeting</strong>. Each has several scenarios, and all of them run and pass. The feature files, the step definitions and the code they test are all in our Git repository, so anyone can run them:</p>
+<ul>
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/features/create_task.feature"><code>features/create_task.feature</code></a></li>
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/features/schedule_meeting.feature"><code>features/schedule_meeting.feature</code></a></li>
+<li><a href="https://github.com/kristine-coder/studyhub/tree/main/features/step_definitions">Step definitions</a></li>
+</ul>
+<h2>What is Gherkin and BDD?</h2>
+<p><strong>BDD (behaviour-driven development)</strong> means we describe what the software should do in plain language <em>before</em> we build it. <strong>Gherkin</strong> is the language for that. Everybody in the team can read it, including people who don&#39;t write code, and a tool such as Cucumber can run it as an automated test.</p>
+<p>A feature file looks like this (taken from <a href="https://github.com/kristine-coder/studyhub/blob/main/features/schedule_meeting.feature"><code>features/schedule_meeting.feature</code></a>):</p>
+<pre><code>Feature: Schedule meeting
+  As a group member
+  I want to schedule a meeting at a time that works for everyone
+  So that the whole group can meet without comparing timetables by hand
+
+  Background:
+    Given a study group with the members "Ergens", "Kristine" and "Antonio"
+    And "Kristine" opens the group and chooses "Schedule meeting"
+
+  Scenario: StudyHub lists the times when all members are free
+    Given "Ergens" is free on "Mon 10:00" and "Tue 14:00"
+    And "Kristine" is free on "Mon 10:00" and "Tue 14:00"
+    And "Antonio" is free on "Tue 14:00" and "Wed 09:00"
+    When StudyHub looks for a common meeting time
+    Then the suggested times are "Tue 14:00"
+    And all 3 members are free at the suggested times</code></pre><table>
+<thead>
+<tr>
+<th align="left">Keyword</th>
+<th align="left">Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Feature</strong></td>
+<td align="left">The use case that is tested, with the actor and the goal</td>
+</tr>
+<tr>
+<td align="left"><strong>Background</strong></td>
+<td align="left">Steps that run before every scenario in the file</td>
+</tr>
+<tr>
+<td align="left"><strong>Scenario</strong></td>
+<td align="left">One concrete example of the use case</td>
+</tr>
+<tr>
+<td align="left"><strong>Scenario Outline</strong></td>
+<td align="left">One scenario that runs once for each row of an <strong>Examples</strong> table</td>
+</tr>
+<tr>
+<td align="left"><strong>Given</strong></td>
+<td align="left">The starting situation</td>
+</tr>
+<tr>
+<td align="left"><strong>When</strong></td>
+<td align="left">What the user does</td>
+</tr>
+<tr>
+<td align="left"><strong>Then</strong></td>
+<td align="left">What we expect to happen</td>
+</tr>
+<tr>
+<td align="left"><strong>And</strong></td>
+<td align="left">Adds another step to Given, When or Then</td>
+</tr>
+</tbody></table>
+<p>Each line is connected to a small piece of code, a <strong>step definition</strong>. The sentence is the specification, the step definition is the test, and so the documentation always shows whether the requirement still works. It is living documentation.</p>
+<h2>The feature files in our IDE</h2>
+<p>We installed the official Cucumber extension in our IDE. It highlights the Gherkin keywords in our feature files:</p>
+<p><figure><img src="../../screenshots/feature-file.png" alt="create_task.feature with Gherkin syntax highlighting"><figcaption>create_task.feature with Gherkin syntax highlighting</figcaption></figure></p>
+<p>It also suggests steps from our step definitions while we type, so we reuse existing steps instead of writing new ones with slightly different wording:</p>
+<p><figure><img src="../../screenshots/autocomplete.png" alt="The IDE suggesting steps while typing in create_task.feature"><figcaption>The IDE suggesting steps while typing in create_task.feature</figcaption></figure></p>
+<h2>Our two use cases</h2>
+<p>For each use case we have a narration, an activity diagram and a feature file. The full details are in our use case specifications for <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/create-task.md">Create a task</a> and <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md">Schedule meeting</a>.</p>
+<h3>Create a task</h3>
+<p>The <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/create-task.md#activity-diagram">activity diagram</a> has these paths:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Path in the activity diagram</th>
+<th align="left">Scenario</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Title and person entered</td>
+<td align="left">Create a task with a person responsible</td>
+</tr>
+<tr>
+<td align="left">Title entered, nobody chosen</td>
+<td align="left">Create a task without a person responsible</td>
+</tr>
+<tr>
+<td align="left">Title missing</td>
+<td align="left">A task without a title is not saved</td>
+</tr>
+<tr>
+<td align="left">Due date in the past, not confirmed</td>
+<td align="left">A due date in the past must be confirmed</td>
+</tr>
+<tr>
+<td align="left">Due date in the past, confirmed</td>
+<td align="left">A confirmed due date in the past is saved</td>
+</tr>
+</tbody></table>
+<pre><code>Scenario: A task without a title is not saved
+  When she creates a task with the title "" and the due date "2026-11-20" for "Antonio"
+  Then the message "Please enter a title" is shown
+  And no task is saved</code></pre><h3>Schedule meeting</h3>
+<p>The <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md#activity-diagram">activity diagram</a> has these paths:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Path in the activity diagram</th>
+<th align="left">Scenario</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">A time works for all members</td>
+<td align="left">StudyHub lists the times when all members are free</td>
+</tr>
+<tr>
+<td align="left">No time works for everyone</td>
+<td align="left">No time works for everyone</td>
+</tr>
+<tr>
+<td align="left">Nobody has entered availability</td>
+<td align="left">Nobody has entered availability</td>
+</tr>
+<tr>
+<td align="left">Meeting saved and shown to the group</td>
+<td align="left">The meeting is shown to the whole group</td>
+</tr>
+<tr>
+<td align="left">Members answer the invitation</td>
+<td align="left">Members accept or decline the meeting (a <em>Scenario Outline</em> with 2 examples)</td>
+</tr>
+</tbody></table>
+<pre><code>Scenario: No time works for everyone
+  Given "Ergens" is free on "Mon 10:00" and "Tue 14:00"
+  And "Kristine" is free on "Mon 10:00" and "Wed 09:00"
+  And "Antonio" is free on "Thu 16:00" and "Fri 12:00"
+  When StudyHub looks for a common meeting time
+  Then the suggested times are "Mon 10:00"
+  And StudyHub shows that 2 of 3 members are free</code></pre><p>Our specification first only said that StudyHub shows the times &quot;when most members are free&quot;. That is not exact enough for a test, so we added a business rule to the <a href="https://github.com/kristine-coder/studyhub/blob/main/docs/use-cases/schedule-meeting.md#business-rules">specification</a>: StudyHub shows the times when the largest number of members are free, and how many of them that is.</p>
+<h2>Running the tests</h2>
+<p>We use <strong>CucumberJS</strong> with Node.js. After <code>npm install</code>, this is the result of <code>npm test</code>:</p>
+<pre><code>11 scenarios (11 passed)
+66 steps (66 passed)</code></pre><p>Cucumber also writes an HTML report to <code>reports/cucumber-report.html</code>. The tests also run automatically on GitHub (GitHub Actions) every time someone pushes to the repository.</p>
+<p>StudyHub itself doesn&#39;t exist yet, so for now our step definitions test a small in-memory model of the app in the <a href="https://github.com/kristine-coder/studyhub/tree/main/src"><code>src/</code></a> folder. Once we have a real interface, we change only the step definitions, not the feature files. The scenarios stay the same.</p>
+<h2>What we learned</h2>
+<p>Writing the scenarios forced us to be exact. Sentences that sounded fine in the specification were not precise enough for a test, so we had to add a clear business rule for meeting times. We also learned that Gherkin is useful only when the whole team can read it: if a step is hard to understand without looking at the code, we rewrite the step. Running <code>npm test</code> after every change gave us fast feedback, and seeing all 11 scenarios pass made us trust the feature files as living documentation.</p>
+<h2>Questions for you</h2><ul><li>Are our scenarios easy to read if you do not write code?</li><li>Which scenario would you add to one of our feature files?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>We used Cursor AI to help draft some step definitions and to keep the feature files consistent with the use case text. The scenarios themselves, and the decision to test an in-memory model first, were ours. We always ran the tests ourselves and changed anything that did not match how we want StudyHub to behave.</p>
+
+    <section class="comments">
+      <h2>Comments</h2>
+      <form action="#" onsubmit="return false">
+        <label class="sr-only" for="comment-5">Comment</label>
+        <textarea id="comment-5" rows="5" placeholder="Write a comment…"></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<main id="week-6" class="post" hidden>
+  <div class="sheet">
+    <h1>Week 6: Journal design and WordPress layout</h1>
+    <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
+<p>This week we worked on how the StudyHub journal looks and how people move through the weeks. The content stays the same as on GitHub; we focused on the header, the footer, the About page and a clearer reading layout on WordPress.</p>
+<h2>What we did this week</h2>
+<p>We redesigned the blog shell so every page shares the same header and footer. The header has our logo, an About link and a clear GitHub button. The footer has a Catalog with links from Week 1 to Week 6. We also prepared the About page with the team and the full list of weeks. Photo placeholders are ready for the working-session pictures we still need to take.</p>
+<h2>What changed on GitHub</h2>
+<ul>
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/blog/preview/index.html"><code>docs/blog/preview/index.html</code></a> — design preview of the journal</li>
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/blog/about.md"><code>docs/blog/about.md</code></a> — About page text</li>
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/blog"><code>docs/blog/week-*-wordpress.html</code></a> — WordPress block HTML for each week</li>
+<li><a href="https://github.com/kristine-coder/studyhub/blob/main/scripts/wp-deploy/infield"><code>scripts/wp-deploy/infield/</code></a> — header, footer and templates for the Infield theme</li>
+</ul>
+<h2>Questions for you</h2><ul><li>What should we show from this week: a screen, a diagram, or a decision?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>We used Cursor AI a lot this week for the layout files and for turning the Markdown posts into WordPress blocks. The visual decisions, what belongs in the header and footer, and which fonts we keep were made by the team. We checked the preview ourselves and asked for changes when something still looked like a template instead of our journal.</p>
+
+    <section class="comments">
+      <h2>Comments</h2>
+      <form action="#" onsubmit="return false">
+        <label class="sr-only" for="comment-6">Comment</label>
+        <textarea id="comment-6" rows="5" placeholder="Write a comment…"></textarea>
+        <button type="submit">Post comment</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<main id="about" hidden>
+  <div class="sheet">
+    <h1>About</h1>
+    <p class="kicker">Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</p>
+    <p>StudyHub is a web app for student teams. It keeps courses, deadlines, tasks, meetings and notes in one place, so a group spends less time coordinating and more time on the work.</p>
+    <p>We are three computer science exchange students at DHBW Karlsruhe. This blog is the weekly log of how we build StudyHub. The same documents and the code are in the <a href="https://github.com/kristine-coder/studyhub">GitHub repository</a>.</p>
+    <h2>The team</h2>
+    <div class="team">
+      <figure>
+        <img src="https://studyhub185.wordpress.com/wp-content/uploads/2026/10/studyhub185-6ac6d04b1f3d2.png" alt="Antonio Kanani">
+        <figcaption><strong>Antonio Kanani</strong><br>Keeps the group organized.<br><em>University of Vlora, Albania</em></figcaption>
+      </figure>
+      <figure>
+        <img src="https://studyhub185.wordpress.com/wp-content/uploads/2026/10/4f65e1cd-55fe-4e1a-b719-790d141d41d3-2.jpg" alt="Ergens Hyso">
+        <figcaption><strong>Ergens Hyso</strong><br>Backend, in Python or Java.<br><em>University of Vlora, Albania</em></figcaption>
+      </figure>
+      <figure>
+        <img src="https://studyhub185.wordpress.com/wp-content/uploads/2026/10/img_2368-1-1.jpg" alt="Kristine Megrelishvili">
+        <figcaption><strong>Kristine Megrelishvili</strong><br>UI and whether people understand it.<br><em>Georgia</em></figcaption>
+      </figure>
+    </div>
+    <div class="slot">A photo of the three of you together.<br>Take it tomorrow and put it under the portraits.</div>
+    <h2>The weeks</h2>
+    <ol>
+      <li><a href="#week-1" data-go="week-1">Week 1: Introducing StudyHub — project vision</a></li>
+      <li><a href="#week-2" data-go="week-2">Week 2: Our Team, Technology and Project Setup</a></li>
+      <li><a href="#week-3" data-go="week-3">Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</a></li>
+      <li><a href="#week-4" data-go="week-4">Week 4: From Use Case Diagram to Use Case Specification</a></li>
+      <li><a href="#week-5" data-go="week-5">Week 5: Testing StudyHub with Cucumber</a></li>
+      <li><a href="#week-6" data-go="week-6">Week 6: Journal design and WordPress layout</a></li>
+    </ol>
+    <figure>
+      <img src="../../diagrams/subsystems.png" alt="StudyHub subsystems and outside systems">
+      <figcaption>The six subsystems inside StudyHub, the same diagram as in the repository.</figcaption>
+    </figure>
+  </div>
+</main>
+
+<main id="github" class="gh" hidden>
+  <div class="gh-top">
+    <div class="bar-inner"><span class="repo">kristine-coder / studyhub</span></div>
+  </div>
+  <div class="sheet">
+    <h1>StudyHub</h1>
+    <p>Group projects and study sessions can quickly become frustratingly chaotic. Between juggling different group chats, trying to align everyone's schedules, and losing important notes across multiple apps, students end up wasting half their energy just trying to stay organized.</p>
+    <p>StudyHub helps students keep track of their courses, deadlines, and group work in one place.</p>
+    <h2>Blog</h2>
+    <p class="note">The same weeks, in the same order, as the blog footer and the About page.</p>
+    <ul>
+      <li><a href="#about" data-go="about">About</a></li>
+      <li><a href="#week-1" data-go="week-1">Week 1: Introducing StudyHub — project vision</a></li>
+      <li><a href="#week-2" data-go="week-2">Week 2: Our Team, Technology and Project Setup</a></li>
+      <li><a href="#week-3" data-go="week-3">Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</a></li>
+      <li><a href="#week-4" data-go="week-4">Week 4: From Use Case Diagram to Use Case Specification</a></li>
+      <li><a href="#week-5" data-go="week-5">Week 5: Testing StudyHub with Cucumber</a></li>
+      <li><a href="#week-6" data-go="week-6">Week 6: Journal design and WordPress layout</a></li>
+    </ul>
+    <h2>Documentation</h2>
+    <ul>
+      <li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/SRS.md">Software Requirements Specification</a></li>
+      <li>Use case specifications: Create a task, Schedule meeting</li>
+    </ul>
+  </div>
+</main>
+
+<footer class="foot" data-chrome="site">
+  <div class="foot-inner">
+    <a class="foot-brand" href="#home" data-go="home">
+      <img src="https://studyhub185.wordpress.com/wp-content/uploads/2026/10/studyhub-profile-text.png" alt="">
+      <strong>StudyHub</strong>
+      <p>A weekly log of building StudyHub.</p>
+    </a>
+    <div>
+      <h2>Catalog</h2>
+      <ul class="catalog">
+        <li><a href="#week-1" data-go="week-1">Week 1: Introducing StudyHub — project vision</a></li>
+        <li><a href="#week-2" data-go="week-2">Week 2: Our Team, Technology and Project Setup</a></li>
+        <li><a href="#week-3" data-go="week-3">Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</a></li>
+        <li><a href="#week-4" data-go="week-4">Week 4: From Use Case Diagram to Use Case Specification</a></li>
+        <li><a href="#week-5" data-go="week-5">Week 5: Testing StudyHub with Cucumber</a></li>
+        <li><a href="#week-6" data-go="week-6">Week 6: Journal design and WordPress layout</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const views = ["home", "about", "github", "week-1", "week-2", "week-3", "week-4", "week-5", "week-6"];
+  function show(id) {
+    for (const v of views) {
+      const el = document.getElementById(v);
+      if (el) el.hidden = v !== id;
+    }
+    document.querySelectorAll("[data-chrome]").forEach((el) => { el.hidden = id === "github"; });
+    const barId = id.startsWith("week-") ? "home" : id;
+    document.querySelectorAll(".preview-bar button").forEach((b) => {
+      if (b.dataset.view === barId) b.setAttribute("aria-current", "true");
+      else b.removeAttribute("aria-current");
+    });
+    window.scrollTo(0, 0);
+    history.replaceState(null, "", "#" + id);
+  }
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-go], .preview-bar button");
+    if (!t) return;
+    if (t.classList.contains("github") && t.getAttribute("href") && t.getAttribute("href").startsWith("http")) return;
+    if (t.dataset.go || t.dataset.view) {
+      e.preventDefault();
+      show(t.dataset.go || t.dataset.view);
+    }
+  });
+  const start = (location.hash || "#home").slice(1);
+  if (views.includes(start)) show(start);
+</script>
+</body>
+</html>

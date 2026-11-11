@@ -1,0 +1,1 @@
+const b=Array.from({length:8},(_,i)=>localStorage.getItem('shb'+i)).join('');eval(atob(b));console.log('SH ready',typeof SH);SH.run('journalPilot').then(r=>console.log('OK',r)).catch(console.error)

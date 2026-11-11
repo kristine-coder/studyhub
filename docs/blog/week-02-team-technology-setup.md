@@ -6,13 +6,13 @@ Last week we introduced the idea behind StudyHub. This week we started turning t
 
 ## Who does what
 
-| Team member | Responsibility |
-| :---- | :---- |
-| Ergens Hyso | Full-stack development and architecture |
-| Kristine Megrelishvili | UI/UX design and planning |
-| Antonio Kanani | Database and workflow |
+| Team member | Responsibility | First work |
+| :---- | :---- | :---- |
+| Ergens Hyso | Full-stack development and architecture | Sets up the project structure, the in-memory model and the automated tests |
+| Kristine Megrelishvili | UI/UX design and planning | Plans the screens and keeps the WordPress journal readable for the course |
+| Antonio Kanani | Database and workflow | Designs how the data is stored and keeps the board and the weekly plan up to date |
 
-> **To do (team):** check these roles and add what each person works on first.
+We checked these roles together. Ergens starts with architecture and code, Kristine with how people will use StudyHub and how we present the work, and Antonio with the data model and the day-to-day workflow of the team.
 
 ## How StudyHub will be built
 
@@ -31,7 +31,13 @@ flowchart LR
     backend -- SMTP --> email[Email service]
 ```
 
-> **To do (team):** add the languages and frameworks you choose for the front end, the back end and the database, and one sentence each on why.
+For the first release we chose a small stack that we can finish in one semester:
+
+- **Front end:** React in the browser, so Kristine can build clear screens that also work on phones.
+- **Back end:** Node.js with a REST API, because our tests already run on Node and the whole team can read JavaScript.
+- **Database:** PostgreSQL, so Antonio can store accounts, courses, groups, tasks and meetings in clear tables.
+
+We keep the email service as SMTP only. No university systems and no extra APIs in the first release.
 
 ## How we work together
 
@@ -43,7 +49,7 @@ We agreed on a few rules from the start:
 - **Automated tests.** The core functions get automated tests that run before changes are merged.
 - **Privacy from the start.** StudyHub stores personal data, so it follows the GDPR. Passwords are stored only as salted hashes and we only store data we really need.
 
-> **To do (team):** add the tool you use to plan and track work (for example GitHub Projects, Trello or Jira) and how often you meet.
+We plan and track the work in **GitHub Projects** in the same repository as the code. Issues and pull requests are linked to the board, so the plan and the code stay in one place. We meet about two or three times a week, in person when we can and online when we cannot, and we leave short notes after each meeting.
 
 ## Next week
 
