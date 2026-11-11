@@ -41,7 +41,7 @@ Sprints are named after the RUP phase, as required:
 | Sprint | Dates | Goal |
 | :---- | :---- | :---- |
 | Inception#1 … Inception#5 *(optional backfill)* | Weeks 1–5 | idea, stack, SRS, UC specs, Cucumber |
-| **Elaboration#1** | *set in YouTrack (target: this week)* | public board, toolchain, architecture confirm, UC breakdown |
+| **Elaboration#1** | 11–18 Nov 2026 | public board, toolchain, architecture confirm, UC breakdown |
 | Elaboration#2 … Elaboration#5 | later | design and implementation toward the midterm |
 
 We do not need a perfect epic / story / subtask tree yet. We do need Elaboration#1 to exist with dates, so the first burn-down report has a start and an end.
@@ -64,9 +64,13 @@ The first Elaboration sprint focuses on the technical foundation and on turning 
 | Keep Cucumber tests green on CI | Ergens | Test | Elaboration | UC-CreateTask | 2h |
 | Write Week 6 blog post | Kristine | Project Management | Elaboration | — | 3h |
 
-Sprint **Elaboration#1** (11–18 Nov 2026) now holds the foundation tasks above, each with an assignee, Estimated time, Phase, Workflow and (when relevant) Use case.
+Sprint **Elaboration#1** (11–18 Nov 2026) now holds the foundation tasks above, with Phase, Workflow and sprint assignment on the board:
 
-> **Team action:** add a board screenshot of Elaboration#1 here.
+![Elaboration#1 Scrum board](images/week-06/board-elaboration1.png)
+
+Example issue fields (Phase / Workflow on the right):
+
+![STU-6 issue fields](images/week-06/task-stu-6-fields.png)
 
 If the sprint looks overloaded for one person, we move unfinished work to Elaboration#2 instead of faking a green burn-down. Clean charts are not required yet; honest estimates and tags are.
 
@@ -91,9 +95,11 @@ The goal is one chain:
 
 WebStorm is already connected to `https://kristine2473.youtrack.cloud`; **Open Task** lists our `STU-…` issues, and changelist names use `${id} ${summary}`. YouTrack **Version Control** is linked to GitHub `kristine-coder/studyhub`, so commits that mention an issue ID can appear on that issue.
 
-> **Team action:** add a screenshot of the Task server settings (token hidden) and one commit or PR that contains a `STU-` ID.
+GitHub commit that references the blog task:
 
-If a part of the chain cannot be automated on our plan, we write that down here instead of leaving a silent gap.
+![STU-9 commit on GitHub](images/week-06/commit-stu-9.png)
+
+> **Team action:** add a WebStorm Task server screenshot (token hidden).
 
 ## Dashboard and reports
 
@@ -108,9 +114,11 @@ The Elaboration#1 dashboard includes the sprint **burndown** and a **cumulative 
 
 [StudyHub Elaboration#1 dashboard](https://kristine2473.youtrack.cloud/dashboard?id=177-3)
 
-The dashboard is shared so All Users can view it.
+The dashboard is shared so All Users can view it:
 
-> **Team action:** add screenshots of burndown + cumulative flow (by Workflow) here.
+![Elaboration#1 dashboard with cumulative flow](images/week-06/dashboard-elaboration1.png)
+
+![Sprint burndown for Elaboration#1](images/week-06/burndown.png)
 
 ## Proof we follow the method
 
