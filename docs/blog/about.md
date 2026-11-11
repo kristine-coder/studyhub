@@ -19,6 +19,6 @@ We are three computer science exchange students at DHBW Karlsruhe. This blog is 
 3. [Week 3: From Idea to Requirements, Our SRS and Use Case Diagram](https://studyhub185.wordpress.com/week-3-requirements-and-use-cases/)
 4. [Week 4: From Use Case Diagram to Use Case Specification](https://studyhub185.wordpress.com/week-4-use-case-specification/)
 5. [Week 5: Testing StudyHub with Cucumber](https://studyhub185.wordpress.com/week-5-testing-with-cucumber/)
-6. [Week 6: Journal design and WordPress layout](https://studyhub185.wordpress.com/week-6-in-progress/)
+6. [Week 6: Running StudyHub as a Scrum project with YouTrack and RUP](https://studyhub185.wordpress.com/week-6-in-progress/)
 
 The requirements are written up in the [Software Requirements Specification](../SRS.md). The two use cases we specified are [Create a task](../use-cases/create-task.md) and [Schedule meeting](../use-cases/schedule-meeting.md).

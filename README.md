@@ -22,7 +22,7 @@ The same weeks, in the same order, are linked from the blog footer and the About
 - [Week 3: From Idea to Requirements, Our SRS and Use Case Diagram](docs/blog/week-03-requirements-and-use-cases.md)
 - [Week 4: From Use Case Diagram to Use Case Specification](docs/blog/week-04-use-case-specification.md)
 - [Week 5: Testing StudyHub with Cucumber](docs/blog/week-05-testing-with-cucumber.md)
-- [Week 6: Journal design and WordPress layout](docs/blog/week-06-in-progress.md)
+- [Week 6: Running StudyHub as a Scrum project with YouTrack and RUP](docs/blog/week-06-in-progress.md)
 
 ## Running the tests
 

@@ -14,7 +14,7 @@ const weeks = [
   ['week-3', 'week-03-requirements-and-use-cases.md', 'What StudyHub must do.'],
   ['week-4', 'week-04-use-case-specification.md', 'Two use cases, written out in full.'],
   ['week-5', 'week-05-testing-with-cucumber.md', 'The same use cases, as tests we can run.'],
-  ['week-6', 'week-06-in-progress.md', 'Not written yet. The page is ready for next week.'],
+  ['week-6', 'week-06-in-progress.md', 'YouTrack, RUP tags, and Elaboration#1.'],
 ];
 
 const questions = {
@@ -41,7 +41,9 @@ const questions = {
     'Which scenario would you add to one of our feature files?',
   ],
   'week-06-in-progress.md': [
-    'What should we show from this week: a screen, a diagram, or a decision?',
+    'Do you also use YouTrack, or did you stay on Jira / GitHub Projects?',
+    'How did you make the board readable for people outside the team?',
+    'Did the IDE → YouTrack → GitHub chain work on the first try?',
   ],
 };
 

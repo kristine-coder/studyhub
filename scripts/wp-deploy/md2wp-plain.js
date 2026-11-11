@@ -44,8 +44,9 @@ const QUESTIONS = {
     'Which scenario would you add to one of our feature files?',
   ],
   'week-06-in-progress': [
-    'Is the catalog in the footer easy to use?',
-    'What should we improve next on the journal layout?',
+    'Do you also use YouTrack, or did you stay on Jira / GitHub Projects?',
+    'How did you make the board readable for people outside the team?',
+    'Did the IDE → YouTrack → GitHub chain work on the first try?',
   ],
 };
 

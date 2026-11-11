@@ -170,7 +170,7 @@
       <a href="#week-3" data-go="week-3"><span>Week 3</span><strong>From Idea to Requirements, Our SRS and Use Case Diagram</strong><small>What StudyHub must do.</small></a>
       <a href="#week-4" data-go="week-4"><span>Week 4</span><strong>From Use Case Diagram to Use Case Specification</strong><small>Two use cases, written out in full.</small></a>
       <a href="#week-5" data-go="week-5"><span>Week 5</span><strong>Testing StudyHub with Cucumber</strong><small>The same use cases, as tests we can run.</small></a>
-      <a href="#week-6" data-go="week-6"><span>Week 6</span><strong>Journal design and WordPress layout</strong><small>Not written yet. The page is ready for next week.</small></a>
+      <a href="#week-6" data-go="week-6"><span>Week 6</span><strong>Running StudyHub as a Scrum project with YouTrack and RUP</strong><small>YouTrack, RUP tags, and Elaboration#1.</small></a>
     </div>
   </div>
 </main>
@@ -696,20 +696,209 @@
 
 <main id="week-6" class="post" hidden>
   <div class="sheet">
-    <h1>Week 6: Journal design and WordPress layout</h1>
+    <h1>Week 6: Running StudyHub as a Scrum project with YouTrack and RUP</h1>
     <p><em>By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani</em></p>
-<p>This week we worked on how the StudyHub journal looks and how people move through the weeks. The content stays the same as on GitHub; we focused on the header, the footer, the About page and a clearer reading layout on WordPress.</p>
-<h2>What we did this week</h2>
-<p>We redesigned the blog shell so every page shares the same header and footer. The header has our logo, an About link and a clear GitHub button. The footer has a Catalog with links from Week 1 to Week 6. We also prepared the About page with the team and the full list of weeks. Photo placeholders are ready for the working-session pictures we still need to take.</p>
-<h2>What changed on GitHub</h2>
+<h2>Introduction: from documents to a managed project</h2>
+<p>During the first five weeks we worked mostly on documents: the project idea, the SRS, two use case specifications with activity diagrams, and Gherkin feature files with Cucumber tests. In RUP terms that was our <strong>Inception</strong> work. Its goal is to understand the scope and decide that StudyHub is worth building.</p>
+<p>This week we move into <strong>Elaboration</strong>. By the midterm we need the Lifecycle Architecture Milestone: proof that our React / Node.js / PostgreSQL stack can carry the product. To get there we need more than good documents. We need to plan, track and measure the work. That is why Week 6 is about project management: a public Scrum board, RUP tags, time tracking, and a chain from the IDE to GitHub.</p>
+<h2>Our project management tool: YouTrack</h2>
+<p>The grading criteria ask for <strong>YouTrack</strong>, so we use YouTrack as our Scrum tool. Earlier we kept a light plan in GitHub Projects; that was useful for Week 2, but it does not give us the public board, RUP custom fields, burn-down and time reports this assignment needs. YouTrack does.</p>
+<blockquote>
+<p><strong>Team action:</strong> create the YouTrack project (suggested key <strong>SH</strong>), make the Scrum board readable for everyone (grant <strong>Issue Reader</strong> to All Users), and paste the public board URL here.</p>
+</blockquote>
+<p>Every issue will look like <code>SH-12</code>. That ID must appear in commit messages and pull request titles.</p>
+<h2>Combining Scrum with RUP</h2>
+<p>Scrum tells us how to work in short iterations. RUP tells us what kind of work we are doing and in which phase we are. Every task on the board carries:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Field</th>
+<th align="left">Values we use</th>
+<th align="left">Why</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Phase</strong></td>
+<td align="left"><code>Inception</code>, <code>Elaboration</code></td>
+<td align="left">RUP phase</td>
+</tr>
+<tr>
+<td align="left"><strong>Workflow</strong></td>
+<td align="left"><code>Requirements</code>, <code>Analysis &amp; Design</code>, <code>Implementation</code>, <code>Test</code>, <code>Project Management</code></td>
+<td align="left">RUP workflow</td>
+</tr>
+<tr>
+<td align="left"><strong>Use case</strong></td>
+<td align="left"><code>UC-CreateTask</code>, <code>UC-ScheduleMeeting</code>, or empty</td>
+<td align="left">only when the task belongs to a use case</td>
+</tr>
+</tbody></table>
+<p>Every sprint task also has one <strong>assignee</strong> and an <strong>Estimated time</strong> value. Tasks such as setting up YouTrack or writing this blog have no use-case tag; they still have Phase and Workflow (usually Project Management).</p>
+<p>When a task is relevant to a use case we also keep the link clear (tag or parent user story), so midterm reports can group time by UC.</p>
+<h2>Sprint naming and history</h2>
+<p>Sprints are named after the RUP phase, as required:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Sprint</th>
+<th align="left">Dates</th>
+<th align="left">Goal</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Inception#1 … Inception#5 <em>(optional backfill)</em></td>
+<td align="left">Weeks 1–5</td>
+<td align="left">idea, stack, SRS, UC specs, Cucumber</td>
+</tr>
+<tr>
+<td align="left"><strong>Elaboration#1</strong></td>
+<td align="left"><em>set in YouTrack (target: this week)</em></td>
+<td align="left">public board, toolchain, architecture confirm, UC breakdown</td>
+</tr>
+<tr>
+<td align="left">Elaboration#2 … Elaboration#5</td>
+<td align="left">later</td>
+<td align="left">design and implementation toward the midterm</td>
+</tr>
+</tbody></table>
+<p>We do not need a perfect epic / story / subtask tree yet. We do need Elaboration#1 to exist with dates, so the first burn-down report has a start and an end.</p>
+<blockquote>
+<p><strong>Team action:</strong> create sprint <strong>Elaboration#1</strong> with dates and link the burn-down (or a screenshot) here.</p>
+</blockquote>
+<h2>Elaboration#1: what is on the sprint</h2>
+<p>The first Elaboration sprint focuses on the technical foundation and on turning our two use cases into tracked work:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Task</th>
+<th align="left">Assignee</th>
+<th align="left">Workflow</th>
+<th align="left">Phase</th>
+<th align="left">UC</th>
+<th align="left">Estimate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Create public YouTrack Scrum board and share dashboard</td>
+<td align="left">Antonio</td>
+<td align="left">Project Management</td>
+<td align="left">Elaboration</td>
+<td align="left">—</td>
+<td align="left">3h</td>
+</tr>
+<tr>
+<td align="left">Add Phase, Workflow and UC custom fields; enable work timer</td>
+<td align="left">Antonio</td>
+<td align="left">Project Management</td>
+<td align="left">Elaboration</td>
+<td align="left">—</td>
+<td align="left">2h</td>
+</tr>
+<tr>
+<td align="left">Connect IDE Task server + issue ID in commits</td>
+<td align="left">Ergens</td>
+<td align="left">Project Management</td>
+<td align="left">Elaboration</td>
+<td align="left">—</td>
+<td align="left">2h</td>
+</tr>
+<tr>
+<td align="left">Connect YouTrack ↔ GitHub (VCS / commits)</td>
+<td align="left">Ergens</td>
+<td align="left">Project Management</td>
+<td align="left">Elaboration</td>
+<td align="left">—</td>
+<td align="left">2h</td>
+</tr>
+<tr>
+<td align="left">Confirm React / Node.js / PostgreSQL skeleton plan</td>
+<td align="left">Ergens</td>
+<td align="left">Analysis &amp; Design</td>
+<td align="left">Elaboration</td>
+<td align="left">—</td>
+<td align="left">3h</td>
+</tr>
+<tr>
+<td align="left">Break down <em>Create a task</em> into implementation tasks</td>
+<td align="left">Kristine</td>
+<td align="left">Analysis &amp; Design</td>
+<td align="left">Elaboration</td>
+<td align="left">UC-CreateTask</td>
+<td align="left">3h</td>
+</tr>
+<tr>
+<td align="left">Break down <em>Schedule meeting</em> into implementation tasks</td>
+<td align="left">Antonio</td>
+<td align="left">Analysis &amp; Design</td>
+<td align="left">Elaboration</td>
+<td align="left">UC-ScheduleMeeting</td>
+<td align="left">3h</td>
+</tr>
+<tr>
+<td align="left">Keep Cucumber tests green on CI</td>
+<td align="left">Ergens</td>
+<td align="left">Test</td>
+<td align="left">Elaboration</td>
+<td align="left">UC-CreateTask</td>
+<td align="left">2h</td>
+</tr>
+<tr>
+<td align="left">Write Week 6 blog post</td>
+<td align="left">Kristine</td>
+<td align="left">Project Management</td>
+<td align="left">Elaboration</td>
+<td align="left">—</td>
+<td align="left">3h</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Team action:</strong> create these issues on Elaboration#1, assign them, fill Estimated time, and add a board screenshot here.</p>
+</blockquote>
+<p>If the sprint looks overloaded for one person, we move unfinished work to Elaboration#2 instead of faking a green burn-down. Clean charts are not required yet; honest estimates and tags are.</p>
+<h2>Time tracking</h2>
+<p>Estimating is only half of the work. We also log the time we actually spend, so we can compare estimates with reality and produce the midterm reports:</p>
+<ol>
+<li>time spent <strong>per use case</strong>,</li>
+<li>time spent <strong>per person</strong>,</li>
+<li>time spent <strong>per RUP workflow</strong>.</li>
+</ol>
+<p>In YouTrack we enable the <strong>In Progress Work Timer</strong> workflow. Starting a task from the IDE starts the timer; finishing the task stores spent time on the issue.</p>
+<h2>Integration with the IDE and GitHub</h2>
+<p>The goal is one chain:</p>
+<ol>
+<li>configure <strong>Settings → Tools → Tasks → Servers</strong> with the YouTrack URL and a token (not a password in the blog),</li>
+<li>use <strong>Start Task</strong> so the issue moves to In Progress and the timer starts (and optionally a branch is created),</li>
+<li>put the issue ID in the commit message and the pull request title, for example <code>SH-12 Confirm architecture skeleton</code>,</li>
+<li>see the commit linked on the YouTrack issue (VCS integration / token from Settings → VCS).</li>
+</ol>
+<blockquote>
+<p><strong>Team action:</strong> add a screenshot of the Task server settings (no secrets) and one commit or PR that contains a YouTrack ID.</p>
+</blockquote>
+<p>If a part of the chain cannot be automated on our plan, we write that down here instead of leaving a silent gap.</p>
+<h2>Dashboard and reports</h2>
+<p>We create a shared dashboard for Elaboration#1. It should include at least:</p>
 <ul>
-<li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/blog/preview/index.html"><code>docs/blog/preview/index.html</code></a> — design preview of the journal</li>
-<li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/blog/about.md"><code>docs/blog/about.md</code></a> — About page text</li>
-<li><a href="https://github.com/kristine-coder/studyhub/blob/main/docs/blog"><code>docs/blog/week-*-wordpress.html</code></a> — WordPress block HTML for each week</li>
-<li><a href="https://github.com/kristine-coder/studyhub/blob/main/scripts/wp-deploy/infield"><code>scripts/wp-deploy/infield/</code></a> — header, footer and templates for the Infield theme</li>
+<li>a <strong>burn-down</strong> for the sprint dates,</li>
+<li>a chart of work by <strong>RUP workflow over time</strong> (cumulative flow by workflow colours on the y-axis of time — not only a flat list of tasks).</li>
 </ul>
-<h2>Questions for you</h2><ul><li>What should we show from this week: a screen, a diagram, or a decision?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
-<p>We used Cursor AI a lot this week for the layout files and for turning the Markdown posts into WordPress blocks. The visual decisions, what belongs in the header and footer, and which fonts we keep were made by the team. We checked the preview ourselves and asked for changes when something still looked like a template instead of our journal.</p>
+<p>Share the dashboard: <strong>all users</strong> can view (no edit); <strong>team members</strong> can edit. Grant <strong>Issue Reader</strong> so people outside the team can open the public board without an invite.</p>
+<blockquote>
+<p><strong>Team action:</strong> paste the public dashboard link and a screenshot of the cumulative workflow chart here.</p>
+</blockquote>
+<h2>Proof we follow the method</h2>
+<p>This post is the written proof. The live proof is the public YouTrack board: sprints named <code>Elaboration#…</code>, tasks with assignees and estimates, Phase / Workflow / UC tags, time spent, and commits that carry the issue ID.</p>
+<h2>What is not expected yet</h2>
+<p>We do not need a perfect burn-down, and we do not need a full epic / story / subtask hierarchy. We do need the sprint, the assigned and estimated tasks, and the RUP tags.</p>
+<h2>What’s next</h2>
+<p>In Elaboration#2 we take the breakdown of <em>Create a task</em> and <em>Schedule meeting</em> and start the real implementation against the architecture we confirm this week.</p>
+<h2>Questions for you</h2>
+<ul>
+<li>Do you also use YouTrack, or did you stay on Jira / GitHub Projects?</li>
+<li>How did you make the board readable for people outside the team?</li>
+<li>Did the IDE → YouTrack → GitHub chain work on the first try?</li>
+</ul>
+<h2>Questions for you</h2><ul><li>Do you also use YouTrack, or did you stay on Jira / GitHub Projects?</li><li>How did you make the board readable for people outside the team?</li><li>Did the IDE → YouTrack → GitHub chain work on the first try?</li></ul><p>Leave us a comment, we read every one of them.</p><h2>Reflection on AI use</h2>
+<p>We used Cursor AI to turn the grading criteria and another team’s Week 6 structure into a StudyHub checklist. The choice of YouTrack, the sprint name Elaboration#1, the task list and who owns each task are team decisions. Screenshots and live board links will be added after the YouTrack project exists.</p>
 
     <section class="comments">
       <h2>Comments</h2>
@@ -751,7 +940,7 @@
       <li><a href="#week-3" data-go="week-3">Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</a></li>
       <li><a href="#week-4" data-go="week-4">Week 4: From Use Case Diagram to Use Case Specification</a></li>
       <li><a href="#week-5" data-go="week-5">Week 5: Testing StudyHub with Cucumber</a></li>
-      <li><a href="#week-6" data-go="week-6">Week 6: Journal design and WordPress layout</a></li>
+      <li><a href="#week-6" data-go="week-6">Week 6: Running StudyHub as a Scrum project with YouTrack and RUP</a></li>
     </ol>
     <figure>
       <img src="../../diagrams/subsystems.png" alt="StudyHub subsystems and outside systems">
@@ -777,7 +966,7 @@
       <li><a href="#week-3" data-go="week-3">Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</a></li>
       <li><a href="#week-4" data-go="week-4">Week 4: From Use Case Diagram to Use Case Specification</a></li>
       <li><a href="#week-5" data-go="week-5">Week 5: Testing StudyHub with Cucumber</a></li>
-      <li><a href="#week-6" data-go="week-6">Week 6: Journal design and WordPress layout</a></li>
+      <li><a href="#week-6" data-go="week-6">Week 6: Running StudyHub as a Scrum project with YouTrack and RUP</a></li>
     </ul>
     <h2>Documentation</h2>
     <ul>
@@ -802,7 +991,7 @@
         <li><a href="#week-3" data-go="week-3">Week 3: From Idea to Requirements, Our SRS and Use Case Diagram</a></li>
         <li><a href="#week-4" data-go="week-4">Week 4: From Use Case Diagram to Use Case Specification</a></li>
         <li><a href="#week-5" data-go="week-5">Week 5: Testing StudyHub with Cucumber</a></li>
-        <li><a href="#week-6" data-go="week-6">Week 6: Journal design and WordPress layout</a></li>
+        <li><a href="#week-6" data-go="week-6">Week 6: Running StudyHub as a Scrum project with YouTrack and RUP</a></li>
       </ul>
     </div>
   </div>
