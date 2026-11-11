@@ -6,3 +6,9 @@ Thumbs.db
 .idea/
 .vscode/
 docs/ai-usage-log.md
+
+# WordPress paste/deploy HTML stays local
+docs/blog/*-wordpress.html
+docs/blog/about-wordpress.html
+scripts/wp-deploy/infield/*.html
+scripts/wp-deploy/plain/*.html
