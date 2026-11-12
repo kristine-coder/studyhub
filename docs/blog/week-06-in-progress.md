@@ -2,7 +2,7 @@
 
 *By Ergens Hyso, Kristine Megrelishvili and Antonio Kanani*
 
-## Introduction: from documents to a managed project
+## Introduction: from documents to a managed project 
 
 During the first five weeks we worked mostly on documents: the project idea, the SRS, two use case specifications with activity diagrams, and Gherkin feature files with Cucumber tests. In RUP terms that was our **Inception** work. Its goal is to understand the scope and decide that StudyHub is worth building.
 
